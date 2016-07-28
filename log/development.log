@@ -1,0 +1,1331 @@
+  [1m[36m (19.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (16.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePatients (20160522185323)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185323"]]
+  [1m[35m (15.8ms)[0m  commit transaction
+Migrating to CreateDoctors (20160522185340)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185340"]]
+  [1m[35m (20.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-05-22 14:59:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.2ms)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 14:59:53 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 279ms (Views: 275.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/patients/new" for ::1 at 2016-05-22 14:59:58 -0400
+Processing by PatientsController#new as HTML
+  Rendered patients/_form.html.erb (24.6ms)
+  Rendered patients/new.html.erb within layouts/application (28.9ms)
+Completed 200 OK in 72ms (Views: 64.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/patients" for ::1 at 2016-05-22 15:00:29 -0400
+Processing by PatientsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n0Q+AEel2wgTzE/uRdGaabjeCaImDBsmzgVZGnbZ51xfK6n/2YMzi2Mtg7MhLH3WVkL+s94PLcoz0Q2egNVzQQ==", "patient"=>{"email"=>"jschmoe@patients.com", "first_name"=>"Joe", "last_name"=>"Schmoe", "street"=>"123 Fast Lane", "city"=>"Brooklyn", "state"=>"New York", "zip"=>"11206"}, "commit"=>"Create Patient"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jschmoe@patients.com"], ["first_name", "Joe"], ["last_name", "Schmoe"], ["street", "123 Fast Lane"], ["city", "Brooklyn"], ["state", "New York"], ["zip", "11206"], ["created_at", "2016-05-22 19:00:29.956399"], ["updated_at", "2016-05-22 19:00:29.956399"]]
+  [1m[36m (14.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/patients/1
+Completed 302 Found in 21ms (ActiveRecord: 14.6ms)
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:00:30 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.2ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 27ms (Views: 21.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 15:00:35 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/_form.html.erb (4.0ms)
+  Rendered patients/edit.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/patients/1" for ::1 at 2016-05-22 15:00:42 -0400
+Processing by PatientsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GGDtmtkXHPj8Rb8CV2FabgO+FwO1grtAgoxdUAqysLHYD3plRzH0e4ykc18znL3R7SLgEk2Bjax/WAnU/L4krA==", "patient"=>{"email"=>"jschmo", "first_name"=>"Joe", "last_name"=>"Schmoe", "street"=>"123 Fast Lane", "city"=>"Brooklyn", "state"=>"New York", "zip"=>"11206"}, "commit"=>"Update Patient", "id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered patients/_form.html.erb (5.7ms)
+  Rendered patients/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 31ms (Views: 26.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 15:00:51 -0400
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/doctors" for ::1 at 2016-05-22 15:01:02 -0400
+Processing by DoctorsController#index as HTML
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT "doctors".* FROM "doctors"
+  Rendered doctors/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 21ms (Views: 17.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/doctors/new" for ::1 at 2016-05-22 15:01:05 -0400
+Processing by DoctorsController#new as HTML
+  Rendered doctors/_form.html.erb (4.7ms)
+  Rendered doctors/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 24ms (Views: 15.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/doctors" for ::1 at 2016-05-22 15:01:31 -0400
+Processing by DoctorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aUYDJdt4OB/lrHwovcu78bkKl35C3vjYRN304k/iJMSpKZTaRV7QnJVNsHXZNlxOV5Zgb7rdzjS5CaBmue6w2Q==", "doctor"=>{"email"=>"mclarke@doctors.com", "first_name"=>"Mike", "last_name"=>"Clarke", "street"=>"456 Slow Lane", "city"=>"Brooklyn", "state"=>"New York", "zip"=>"11207"}, "commit"=>"Create Doctor"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "mclarke@doctors.com"], ["first_name", "Mike"], ["last_name", "Clarke"], ["street", "456 Slow Lane"], ["city", "Brooklyn"], ["state", "New York"], ["zip", "11207"], ["created_at", "2016-05-22 19:01:31.192199"], ["updated_at", "2016-05-22 19:01:31.192199"]]
+  [1m[36m (17.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/doctors/1
+Completed 302 Found in 22ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/doctors/1" for ::1 at 2016-05-22 15:01:31 -0400
+Processing by DoctorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered doctors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/doctors" for ::1 at 2016-05-22 15:01:42 -0400
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors/1" for ::1 at 2016-05-22 15:01:45 -0400
+Processing by DoctorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered doctors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors" for ::1 at 2016-05-22 15:01:48 -0400
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 15:07:31 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.3ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 15:07:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 185ms (Views: 177.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 15:07:55 -0400
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:08:03 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 34ms (Views: 25.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:11:18 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 37ms (Views: 24.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 15:11:18 -0400
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:39:21 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/home/zonotope/code/spreemo/spreemo_codetest/app/models/concerns/person_concern.rb:17: syntax error, unexpected ')', expecting ']'
+/home/zonotope/code/spreemo/spreemo_codetest/app/models/concerns/person_concern.rb:36: syntax error, unexpected keyword_end, expecting ')'):
+  app/models/concerns/person_concern.rb:17: syntax error, unexpected ')', expecting ']'
+  app/models/concerns/person_concern.rb:36: syntax error, unexpected keyword_end, expecting ')'
+  app/models/patient.rb:2:in `<class:Patient>'
+  app/models/patient.rb:1:in `<top (required)>'
+  app/controllers/patients_controller.rb:67:in `set_patient'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.3ms)
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:39:21 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/home/zonotope/code/spreemo/spreemo_codetest/app/models/concerns/person_concern.rb:17: syntax error, unexpected ')', expecting ']'
+/home/zonotope/code/spreemo/spreemo_codetest/app/models/concerns/person_concern.rb:36: syntax error, unexpected keyword_end, expecting ')'):
+  app/models/concerns/person_concern.rb:17: syntax error, unexpected ')', expecting ']'
+  app/models/concerns/person_concern.rb:36: syntax error, unexpected keyword_end, expecting ')'
+  app/models/patient.rb:2:in `<class:Patient>'
+  app/models/patient.rb:1:in `<top (required)>'
+  app/controllers/patients_controller.rb:67:in `set_patient'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (23.8ms)
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 15:40:08 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 11.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 15:40:08 -0400
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 15:40:11 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/_form.html.erb (8.3ms)
+  Rendered patients/edit.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/patients/1" for ::1 at 2016-05-22 15:40:16 -0400
+Processing by PatientsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xTKGCjlAwW0wqNGcq2TpTV0kpNDorJsA5EJIwBERBuYFXRH1p2Yp7kBJHcHPmQ7ys7hTwRCvrewZlhxE5x2S+w==", "patient"=>{"email"=>"jschmoe@patients.com", "first_name"=>"Joe", "last_name"=>"Schmoe", "street"=>"123 Fast Lane", "city"=>"Brooklyn", "state"=>"New York", "zip"=>"1120"}, "commit"=>"Update Patient", "id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered patients/_form.html.erb (3.0ms)
+  Rendered patients/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 24ms (Views: 19.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 15:40:26 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.1ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2016-05-22 16:04:49 -0400
+
+SyntaxError (/home/zonotope/code/spreemo/spreemo_codetest/app/helpers/states_helper.rb:1: class/module name must be CONSTANT):
+  app/helpers/states_helper.rb:1: class/module name must be CONSTANT
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.9ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.6ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (12.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (23.0ms)
+
+
+Started GET "/" for ::1 at 2016-05-22 16:05:10 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (0.6ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:05:16 -0400
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.3ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:05:18 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.3ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/_form.html.erb (12.0ms)
+  Rendered patients/edit.html.erb within layouts/application (12.6ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `select_tag' for #<ActionView::Helpers::FormBuilder:0x007f4ab6978918>
+Did you mean?  select):
+    33:   </div>
+    34:   <div class="field">
+    35:     <%= f.label :state %><br>
+    36:     <%= f.select_tag :state, options_for_select(us_states) %>
+    37:   </div>
+    38:   <div class="field">
+    39:     <%= f.label :zip %><br>
+  app/views/patients/_form.html.erb:36:in `block in _app_views_patients__form_html_erb__1005744775219114649_69979433763620'
+  app/views/patients/_form.html.erb:1:in `_app_views_patients__form_html_erb__1005744775219114649_69979433763620'
+  app/views/patients/edit.html.erb:3:in `_app_views_patients_edit_html_erb__1457878579374462776_31156680'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.6ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (11.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (24.0ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:05:19 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/_form.html.erb (14.9ms)
+  Rendered patients/edit.html.erb within layouts/application (15.5ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `select_tag' for #<ActionView::Helpers::FormBuilder:0x0000000385c368>
+Did you mean?  select):
+    33:   </div>
+    34:   <div class="field">
+    35:     <%= f.label :state %><br>
+    36:     <%= f.select_tag :state, options_for_select(us_states) %>
+    37:   </div>
+    38:   <div class="field">
+    39:     <%= f.label :zip %><br>
+  app/views/patients/_form.html.erb:36:in `block in _app_views_patients__form_html_erb__1005744775219114649_29737460'
+  app/views/patients/_form.html.erb:1:in `_app_views_patients__form_html_erb__1005744775219114649_29737460'
+  app/views/patients/edit.html.erb:3:in `_app_views_patients_edit_html_erb__1457878579374462776_14931620'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.8ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (11.1ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (21.9ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:05:46 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/_form.html.erb (5.9ms)
+  Rendered patients/edit.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:05:47 -0400
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:13:12 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/_form.html.erb (3.3ms)
+  Rendered patients/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 28ms (Views: 16.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:13:12 -0400
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:15:27 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.3ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/patients/new" for ::1 at 2016-05-22 16:15:38 -0400
+Processing by PatientsController#new as HTML
+  Rendered patients/_form.html.erb (5.7ms)
+  Rendered patients/new.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/patients" for ::1 at 2016-05-22 16:16:22 -0400
+Processing by PatientsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fns0voYlJWBMnsVqD7UQygCmyd3i+quqtzj6ViOLUdjWFKNBGAPN4zx/CTdrSPd17jo+zBr5nUZK7K7S1YfFxQ==", "patient"=>{"email"=>"jsmith@boon.com", "first_name"=>"John", "last_name"=>"Smith", "street"=>"123 Seen Rd", "city"=>"Brooklyn", "state"=>"NY", "zip"=>"11206"}, "commit"=>"Create Patient"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jsmith@boon.com"], ["first_name", "John"], ["last_name", "Smith"], ["street", "123 Seen Rd"], ["city", "Brooklyn"], ["state", "NY"], ["zip", "11206"], ["created_at", "2016-05-22 20:16:22.673965"], ["updated_at", "2016-05-22 20:16:22.673965"]]
+  [1m[36m (29.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/patients/2
+Completed 302 Found in 34ms (ActiveRecord: 29.6ms)
+
+
+Started GET "/patients/2" for ::1 at 2016-05-22 16:16:22 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPatient Load (0.2ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered patients/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:25:27 -0400
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.3ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:25:27 -0400
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:25:58 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.1ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 159ms (Views: 149.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:25:59 -0400
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:26:22 -0400
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 31ms (Views: 29.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:26:22 -0400
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:26:43 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.2ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/_form.html.erb (17.4ms)
+  Rendered patients/edit.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 42ms (Views: 32.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/patients/1" for ::1 at 2016-05-22 16:26:56 -0400
+Processing by PatientsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JW83gSPY0PXCNWwKxTLk0TWCDWmu/xNRYEAmVjkeTy/lAKB+vf44drLUoFehzwNu2x76eFb8Jb2dlHLSzxLbMg==", "patient"=>{"email"=>"jschmoe@patients.com", "first_name"=>"Joe", "last_name"=>"Schmoe", "street"=>"123 Fast Lane", "city"=>"Brooklyn", "state"=>"NY", "zip"=>"11206"}, "commit"=>"Update Patient", "id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "patients" SET "state" = ?, "updated_at" = ? WHERE "patients"."id" = ?[0m  [["state", "NY"], ["updated_at", "2016-05-22 20:26:56.270855"], ["id", 1]]
+  [1m[35m (14.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/patients/1
+Completed 302 Found in 21ms (ActiveRecord: 15.1ms)
+
+
+Started GET "/patients/1" for ::1 at 2016-05-22 16:26:56 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/patients" for ::1 at 2016-05-22 16:27:01 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.1ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors" for ::1 at 2016-05-22 16:27:08 -0400
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 34ms (Views: 30.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:27:12 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered doctors/_form.html.erb (5.7ms)
+  Rendered doctors/edit.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:27:58 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered doctors/_form.html.erb (3.7ms)
+  Rendered doctors/edit.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:27:59 -0400
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:34:37 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (27.1ms)
+  Rendered doctors/_form.html.erb (28.9ms)
+  Rendered doctors/edit.html.erb within layouts/application (29.6ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00000003e23ee0>:0x007f570c0e0870>
+Did you mean?  format
+               formats
+               form_tag
+               form_for
+               formats=
+               fork):
+    1: <div class="field">
+    2:   <%= form.label :email %><br>
+    3:   <%= form.text_field :email %>
+    4: </div>
+    5: <div class="field">
+  app/views/shared/_person_form.html.erb:2:in `_app_views_shared__person_form_html_erb___1974618975521957939_70005920612580'
+  app/views/doctors/_form.html.erb:14:in `block in _app_views_doctors__form_html_erb__3327633388501373316_70005920595600'
+  app/views/doctors/_form.html.erb:1:in `_app_views_doctors__form_html_erb__3327633388501373316_70005920595600'
+  app/views/doctors/edit.html.erb:3:in `_app_views_doctors_edit_html_erb__3407117171636594695_70006007818340'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.1ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (26.7ms)
+
+
+Started GET "/doctors" for ::1 at 2016-05-22 16:37:06 -0400
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:37:06 -0400
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:37:09 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (4.1ms)
+  Rendered doctors/_form.html.erb (5.9ms)
+  Rendered doctors/edit.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:41:00 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_person_form.html.erb (2.7ms)
+  Rendered doctors/_form.html.erb (4.0ms)
+  Rendered doctors/edit.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 14ms (Views: 13.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:41:01 -0400
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:43:29 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (2.9ms)
+  Rendered doctors/_form.html.erb (4.4ms)
+  Rendered doctors/edit.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-22 16:43:29 -0400
+
+
+Started GET "/doctors/" for ::1 at 2016-05-22 16:43:36 -0400
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:43:40 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (2.4ms)
+  Rendered doctors/_form.html.erb (3.6ms)
+  Rendered doctors/edit.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/doctors/1" for ::1 at 2016-05-22 16:43:50 -0400
+Processing by DoctorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+dOC8UQUrL7isJjYI05rvakGcu3qgVvK2N//UtnCvi45vBUO2jJEPZJRVIVHs4wCR5qF/BKCbSYlC6vWL84qMw==", "doctor"=>{"email"=>"mclarke@doctors.com", "first_name"=>"Mike", "last_name"=>"Clarke", "street"=>"456 Slow Lane", "city"=>"Brooklyn", "state"=>"NY", "zip"=>"11207"}, "commit"=>"Update Doctor", "id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "doctors" SET "state" = ?, "updated_at" = ? WHERE "doctors"."id" = ?[0m  [["state", "NY"], ["updated_at", "2016-05-22 20:43:50.803538"], ["id", 1]]
+  [1m[35m (18.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/doctors/1
+Completed 302 Found in 24ms (ActiveRecord: 19.1ms)
+
+
+Started GET "/doctors/1" for ::1 at 2016-05-22 16:43:50 -0400
+Processing by DoctorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_show_person.html.erb (0.5ms)
+  Rendered doctors/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors/" for ::1 at 2016-05-22 16:43:59 -0400
+Processing by DoctorsController#index as HTML
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT "doctors".* FROM "doctors"
+  Rendered doctors/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-22 16:44:01 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_person_form.html.erb (2.4ms)
+  Rendered doctors/_form.html.erb (3.3ms)
+  Rendered doctors/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-22 16:44:13 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (3.4ms)
+  Rendered patients/_form.html.erb (4.9ms)
+  Rendered patients/edit.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/patients/1/show" for ::1 at 2016-05-22 16:44:23 -0400
+
+ActionController::RoutingError (No route matches [GET] "/patients/1/show"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.0ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (11.5ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (23.9ms)
+
+
+Started GET "/patients/1/" for ::1 at 2016-05-22 16:44:26 -0400
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_show_person.html.erb (0.2ms)
+  Rendered patients/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/patients/" for ::1 at 2016-05-22 16:45:35 -0400
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.1ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "lois@turner.io"], ["first_name", "Pinkie"], ["last_name", "Considine"], ["street", "5673 Thurman Pine"], ["city", "New York"], ["state", "NY"], ["zip", "10012"], ["created_at", "2016-05-23 02:10:21.979656"], ["updated_at", "2016-05-23 02:10:21.979656"]]
+  [1m[36m (14.4ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/doctors" for ::1 at 2016-05-23 00:13:05 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DoctorsController#index as HTML
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT "doctors".* FROM "doctors"
+  Rendered doctors/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 204ms (Views: 190.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-23 00:13:09 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_person_form.html.erb (279.3ms)
+  Rendered doctors/_form.html.erb (302.2ms)
+  Rendered doctors/edit.html.erb within layouts/application (305.2ms)
+Completed 200 OK in 325ms (Views: 318.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-23 00:16:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (255.1ms)
+  Rendered patients/_form.html.erb (257.8ms)
+  Rendered patients/edit.html.erb within layouts/application (260.3ms)
+Completed 200 OK in 417ms (Views: 392.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-23 00:16:52 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_person_form.html.erb (2.9ms)
+  Rendered patients/_form.html.erb (3.9ms)
+  Rendered patients/edit.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/doctors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/patients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/scaffolds.self-90ba492bdc1ac22840e01fed33c0156911f509929cc1bebffc08dafa72764b3c.css?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/doctors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/patients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-05-23 00:16:52 -0400
+
+
+Started GET "/doctors/1/edit" for ::1 at 2016-05-23 00:17:07 -0400
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered shared/_person_form.html.erb (3.1ms)
+  Rendered doctors/_form.html.erb (5.5ms)
+  Rendered doctors/edit.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 46ms (Views: 39.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/patients/1/edit" for ::1 at 2016-05-23 00:17:27 -0400
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_person_form.html.erb (3.8ms)
+  Rendered patients/_form.html.erb (4.9ms)
+  Rendered patients/edit.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "doctors"[0m
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT "doctors".* FROM "doctors"
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160522185340')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160522185323')
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160522185340')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160522185323')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (9.3ms)[0m  [1mDROP TABLE "doctors"[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mDROP TABLE "patients"[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.4ms)[0m  DROP TABLE "doctors"
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "patients"
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "carlee@grant.io"], ["first_name", "Jordy"], ["last_name", "Krajcik"], ["street", "71168 Wayne Way"], ["city", "Sydnishire"], ["state", "NY"], ["zip", "56530-9801"], ["created_at", "2016-07-18 20:58:44.576927"], ["updated_at", "2016-07-18 20:58:44.576927"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "brigitte_mante@pfannerstill.biz"], ["first_name", "Joaquin"], ["last_name", "Prosacco"], ["street", "97159 Torphy Spring"], ["city", "Haroldfurt"], ["state", "CO"], ["zip", "94991"], ["created_at", "2016-07-18 20:58:44.596667"], ["updated_at", "2016-07-18 20:58:44.596667"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "trevion_hammes@wilkinson.name"], ["first_name", "Torey"], ["last_name", "Lueilwitz"], ["street", "5334 Letha Pines"], ["city", "Danielfort"], ["state", "MT"], ["zip", "17325-0510"], ["created_at", "2016-07-18 20:58:44.599321"], ["updated_at", "2016-07-18 20:58:44.599321"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "isaias@watsica.biz"], ["first_name", "Cody"], ["last_name", "Lemke"], ["street", "98460 Sporer Fall"], ["city", "Loyalstad"], ["state", "KS"], ["zip", "59614"], ["created_at", "2016-07-18 20:58:44.602267"], ["updated_at", "2016-07-18 20:58:44.602267"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mariana.hahn@dietrich.org"], ["first_name", "Linwood"], ["last_name", "Wisoky"], ["street", "5133 Charlotte Rapids"], ["city", "East Alanisburgh"], ["state", "MS"], ["zip", "16812-1460"], ["created_at", "2016-07-18 20:58:44.604896"], ["updated_at", "2016-07-18 20:58:44.604896"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "monique_becker@bernhard.info"], ["first_name", "Estevan"], ["last_name", "Zemlak"], ["street", "98334 Zemlak Village"], ["city", "New Braulioside"], ["state", "RI"], ["zip", "65393"], ["created_at", "2016-07-18 20:58:44.608026"], ["updated_at", "2016-07-18 20:58:44.608026"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "elenora@carrolljacobi.co"], ["first_name", "Jaquelin"], ["last_name", "Wolff"], ["street", "558 Prosacco Glens"], ["city", "Kayborough"], ["state", "AK"], ["zip", "15000-6612"], ["created_at", "2016-07-18 20:58:44.611144"], ["updated_at", "2016-07-18 20:58:44.611144"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "thurman@crooks.net"], ["first_name", "Hermina"], ["last_name", "Pfannerstill"], ["street", "965 Hintz Plain"], ["city", "Kobeshire"], ["state", "VT"], ["zip", "11881-1381"], ["created_at", "2016-07-18 20:58:44.614048"], ["updated_at", "2016-07-18 20:58:44.614048"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "brielle@shanahan.co"], ["first_name", "Hershel"], ["last_name", "Lemke"], ["street", "1625 Alicia Knoll"], ["city", "Port Darrylfort"], ["state", "MO"], ["zip", "93858-5542"], ["created_at", "2016-07-18 20:58:44.616874"], ["updated_at", "2016-07-18 20:58:44.616874"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "arthur.kuhic@metz.io"], ["first_name", "Coleman"], ["last_name", "Wuckert"], ["street", "3285 Pfeffer Ramp"], ["city", "Port Aglaebury"], ["state", "IN"], ["zip", "67539"], ["created_at", "2016-07-18 20:58:44.619535"], ["updated_at", "2016-07-18 20:58:44.619535"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "bette@rogahn.biz"], ["first_name", "Aisha"], ["last_name", "D'Amore"], ["street", "1936 Nader Cliffs"], ["city", "New Shawnafort"], ["state", "HI"], ["zip", "63593-7572"], ["created_at", "2016-07-18 20:58:44.628071"], ["updated_at", "2016-07-18 20:58:44.628071"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "haylie@kub.net"], ["first_name", "Deron"], ["last_name", "Russel"], ["street", "699 Ivy Underpass"], ["city", "Lake Maybell"], ["state", "MD"], ["zip", "55962"], ["created_at", "2016-07-18 20:58:44.631185"], ["updated_at", "2016-07-18 20:58:44.631185"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "pablo@padbergcorwin.io"], ["first_name", "Marielle"], ["last_name", "DuBuque"], ["street", "53611 Romaguera Meadows"], ["city", "South Constance"], ["state", "NH"], ["zip", "94731"], ["created_at", "2016-07-18 20:58:44.633967"], ["updated_at", "2016-07-18 20:58:44.633967"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "sandra@cainkshlerin.org"], ["first_name", "Flossie"], ["last_name", "Trantow"], ["street", "7585 Jakubowski Canyon"], ["city", "New Catharinestad"], ["state", "NC"], ["zip", "18399"], ["created_at", "2016-07-18 20:58:44.636683"], ["updated_at", "2016-07-18 20:58:44.636683"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "jay.ortiz@roob.biz"], ["first_name", "Lauriane"], ["last_name", "Schulist"], ["street", "92025 Brisa Mews"], ["city", "New Connermouth"], ["state", "AR"], ["zip", "85161-8885"], ["created_at", "2016-07-18 20:58:44.639477"], ["updated_at", "2016-07-18 20:58:44.639477"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "gabe@spinkamcglynn.org"], ["first_name", "Lura"], ["last_name", "Dickinson"], ["street", "2729 Rafael Ridge"], ["city", "Sydneeborough"], ["state", "SC"], ["zip", "80089-5338"], ["created_at", "2016-07-18 20:58:44.642652"], ["updated_at", "2016-07-18 20:58:44.642652"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "orlo@herman.com"], ["first_name", "Heidi"], ["last_name", "Bashirian"], ["street", "7741 Lennie Springs"], ["city", "South Allison"], ["state", "GA"], ["zip", "29093"], ["created_at", "2016-07-18 20:58:44.645621"], ["updated_at", "2016-07-18 20:58:44.645621"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "simeon_rippin@mills.co"], ["first_name", "Kristopher"], ["last_name", "Ernser"], ["street", "366 Regan Ports"], ["city", "New Willshire"], ["state", "MI"], ["zip", "40946-1437"], ["created_at", "2016-07-18 20:58:44.648511"], ["updated_at", "2016-07-18 20:58:44.648511"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "fidel@kulas.org"], ["first_name", "Vergie"], ["last_name", "Swaniawski"], ["street", "312 Beahan Forge"], ["city", "Zackaryborough"], ["state", "NE"], ["zip", "15950"], ["created_at", "2016-07-18 20:58:44.651478"], ["updated_at", "2016-07-18 20:58:44.651478"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "henry@hilll.co"], ["first_name", "Astrid"], ["last_name", "MacGyver"], ["street", "723 Marks Ford"], ["city", "North Ashtyn"], ["state", "NY"], ["zip", "12901"], ["created_at", "2016-07-18 20:58:44.654157"], ["updated_at", "2016-07-18 20:58:44.654157"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[36m (9.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePatients (20160522185323)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185323"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateDoctors (20160522185340)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185340"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (9.5ms)[0m  [1mDROP TABLE "doctors"[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.3ms)[0m  [1mDROP TABLE "patients"[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160522185340')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160522185323')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "kimberly_sawayn@thiel.name"], ["first_name", "Bernhard"], ["last_name", "Buckridge"], ["street", "43613 Lupe Streets"], ["city", "Wisozkside"], ["state", "MO"], ["zip", "41976"], ["created_at", "2016-07-18 21:01:38.552754"], ["updated_at", "2016-07-18 21:01:38.552754"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "arlo.wunsch@ondrickaondricka.name"], ["first_name", "Keshawn"], ["last_name", "McLaughlin"], ["street", "98770 Ziemann Valleys"], ["city", "Naderberg"], ["state", "AZ"], ["zip", "67660"], ["created_at", "2016-07-18 21:01:38.566754"], ["updated_at", "2016-07-18 21:01:38.566754"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "nyah@markhields.name"], ["first_name", "Misty"], ["last_name", "Hammes"], ["street", "37991 Deshaun Station"], ["city", "North Jayda"], ["state", "VA"], ["zip", "90484-5567"], ["created_at", "2016-07-18 21:01:38.570351"], ["updated_at", "2016-07-18 21:01:38.570351"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "luigi.gutmann@howellrosenbaum.biz"], ["first_name", "Triston"], ["last_name", "Considine"], ["street", "17658 Schneider Street"], ["city", "Lake Velvaville"], ["state", "SC"], ["zip", "53796"], ["created_at", "2016-07-18 21:01:38.573089"], ["updated_at", "2016-07-18 21:01:38.573089"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "elijah_swaniawski@hilllgoyette.name"], ["first_name", "Gustave"], ["last_name", "Champlin"], ["street", "57292 Makenna Summit"], ["city", "Reynoldsstad"], ["state", "MI"], ["zip", "88946"], ["created_at", "2016-07-18 21:01:38.575637"], ["updated_at", "2016-07-18 21:01:38.575637"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "miouri@wolff.com"], ["first_name", "Madilyn"], ["last_name", "Hettinger"], ["street", "175 Purdy Tunnel"], ["city", "Lake Eltonside"], ["state", "AZ"], ["zip", "62178"], ["created_at", "2016-07-18 21:01:38.578152"], ["updated_at", "2016-07-18 21:01:38.578152"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "alva_stokes@oconner.net"], ["first_name", "Zion"], ["last_name", "Douglas"], ["street", "2956 Barton Creek"], ["city", "Antoniettatown"], ["state", "HI"], ["zip", "60165-6278"], ["created_at", "2016-07-18 21:01:38.580962"], ["updated_at", "2016-07-18 21:01:38.580962"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "marquise@lueilwitz.net"], ["first_name", "Willie"], ["last_name", "Aufderhar"], ["street", "559 Corrine Branch"], ["city", "Okunevaborough"], ["state", "LA"], ["zip", "57163"], ["created_at", "2016-07-18 21:01:38.584279"], ["updated_at", "2016-07-18 21:01:38.584279"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "franz_west@homenick.name"], ["first_name", "Rosalia"], ["last_name", "Nikolaus"], ["street", "39967 Justice Center"], ["city", "North Halie"], ["state", "NV"], ["zip", "72571-3146"], ["created_at", "2016-07-18 21:01:38.587202"], ["updated_at", "2016-07-18 21:01:38.587202"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "eleazar@mantegrimes.net"], ["first_name", "Macie"], ["last_name", "Shields"], ["street", "510 Reichert Route"], ["city", "Lake Pansyville"], ["state", "OR"], ["zip", "17600-1032"], ["created_at", "2016-07-18 21:01:38.589834"], ["updated_at", "2016-07-18 21:01:38.589834"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "erling_lebsack@littelruecker.org"], ["first_name", "Muhammad"], ["last_name", "Jacobson"], ["street", "2181 Corbin Keys"], ["city", "Lonborough"], ["state", "RI"], ["zip", "30233-9337"], ["created_at", "2016-07-18 21:01:38.597737"], ["updated_at", "2016-07-18 21:01:38.597737"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "melisa@harber.biz"], ["first_name", "Darrion"], ["last_name", "Bahringer"], ["street", "49802 Christopher Drive"], ["city", "Cummerataview"], ["state", "SD"], ["zip", "83824-0152"], ["created_at", "2016-07-18 21:01:38.601387"], ["updated_at", "2016-07-18 21:01:38.601387"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "toy.stehr@runte.name"], ["first_name", "Carlee"], ["last_name", "Bogan"], ["street", "94216 Schroeder Lakes"], ["city", "South Johathanland"], ["state", "SC"], ["zip", "10006"], ["created_at", "2016-07-18 21:01:38.604421"], ["updated_at", "2016-07-18 21:01:38.604421"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "tavares_fadel@mann.io"], ["first_name", "Norwood"], ["last_name", "Fisher"], ["street", "163 Kemmer Vista"], ["city", "Wardmouth"], ["state", "FL"], ["zip", "63743-5675"], ["created_at", "2016-07-18 21:01:38.606997"], ["updated_at", "2016-07-18 21:01:38.606997"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "laverna@cormierhilpert.info"], ["first_name", "Angelica"], ["last_name", "Hoppe"], ["street", "36563 Jonathan Underpass"], ["city", "East Annieview"], ["state", "GA"], ["zip", "78052-7958"], ["created_at", "2016-07-18 21:01:38.609725"], ["updated_at", "2016-07-18 21:01:38.609725"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "marianna.rempel@gleichnerkerluke.name"], ["first_name", "Lesley"], ["last_name", "Wunsch"], ["street", "4697 Cornelius Walk"], ["city", "West Mabel"], ["state", "NJ"], ["zip", "46954-5412"], ["created_at", "2016-07-18 21:01:38.612219"], ["updated_at", "2016-07-18 21:01:38.612219"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "felicia@okuneva.info"], ["first_name", "Gloria"], ["last_name", "Christiansen"], ["street", "132 Mosciski Prairie"], ["city", "Naderfort"], ["state", "NC"], ["zip", "88441-8552"], ["created_at", "2016-07-18 21:01:38.615070"], ["updated_at", "2016-07-18 21:01:38.615070"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "delaney_quigley@price.io"], ["first_name", "Weston"], ["last_name", "Prosacco"], ["street", "849 Sanford Isle"], ["city", "Romaguerashire"], ["state", "SD"], ["zip", "80383"], ["created_at", "2016-07-18 21:01:38.618308"], ["updated_at", "2016-07-18 21:01:38.618308"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "cleve.cormier@wunsch.net"], ["first_name", "Anya"], ["last_name", "Nolan"], ["street", "491 Morissette Flat"], ["city", "Oberbrunnerview"], ["state", "KY"], ["zip", "36937"], ["created_at", "2016-07-18 21:01:38.621506"], ["updated_at", "2016-07-18 21:01:38.621506"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "dwight@ziemann.org"], ["first_name", "Eddie"], ["last_name", "Stroman"], ["street", "2931 Kevon Port"], ["city", "Ansleytown"], ["state", "LA"], ["zip", "47078"], ["created_at", "2016-07-18 21:01:38.624302"], ["updated_at", "2016-07-18 21:01:38.624302"]]
+  [1m[35m (1.2ms)[0m  commit transaction

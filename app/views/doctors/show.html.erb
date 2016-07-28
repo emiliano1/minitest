@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  Doctor
+</h1>
+
+<%= render partial: "shared/show_person", locals: {person: @doctor} %>
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>

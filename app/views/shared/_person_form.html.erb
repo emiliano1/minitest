@@ -1,0 +1,31 @@
+<div class="field">
+  <%= form.label :email %><br>
+  <%= form.text_field :email %>
+</div>
+<div class="field">
+  <%= form.label :first_name %><br>
+  <%= form.text_field :first_name %>
+</div>
+<div class="field">
+  <%= form.label :last_name %><br>
+  <%= form.text_field :last_name %>
+</div>
+<div class="field">
+  <%= form.label :street %><br>
+  <%= form.text_field :street %>
+</div>
+<div class="field">
+  <%= form.label :city %><br>
+  <%= form.text_field :city %>
+</div>
+<div class="field">
+  <%= form.label :state %><br>
+  <%= form.select :state, options_for_select(us_state_options, person.state) %>
+</div>
+<div class="field">
+  <%= form.label :zip %><br>
+  <%= form.text_field :zip %>
+</div>
+<div class="actions">
+  <%= form.submit %>
+</div>

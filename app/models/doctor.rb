@@ -18,9 +18,7 @@ class Doctor < ActiveRecord::Base
     "#{name} (#{specialty_name})"
   end
 
-  def address
-    "#{street} #{zip}, #{city}, #{state}"
-  end
+
 
   def is_appropriate_for?(ailment)
     ailment.doctors.include?(self)

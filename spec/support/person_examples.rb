@@ -51,4 +51,19 @@ shared_examples_for 'a person' do
       expect(name.include?(last_name)).to be_truthy
     end
   end
+
+  describe '#address' do
+    let(:street) { subject.street }
+    let(:zip) { subject.zip }
+    let(:city) { subject.city }
+    let(:state) { subject.state }
+    let(:address) { subject.address }
+
+    it 'contains street, zip, city and state info' do
+      expect(address.include?(street)).to be_truthy
+      expect(address.include?(zip)).to be_truthy
+      expect(address.include?(city)).to be_truthy
+      expect(address.include?(state)).to be_truthy
+    end
+  end
 end

@@ -45,7 +45,7 @@ describe Doctor do
       end
 
       it "includes the specialty's name between parenthesis" do
-        expect(subject.name_with_specialty =~ /\(Cardiologist\)/).to be_truthy
+        expect(subject.name_with_specialty.include?('(Cardiologist)')).to be_truthy
       end
     end
 
@@ -57,17 +57,6 @@ describe Doctor do
       it "doesn't include specialty's name" do
         expect(subject.name_with_specialty).to eq(subject.name)
       end
-    end
-  end
-
-  describe '#address' do
-    let(:address) { subject.address }
-
-    it 'contains Street, Zip, City and State info' do
-      expect(address.include?(subject.street)).to be_truthy
-      expect(address.include?(subject.zip)).to be_truthy
-      expect(address.include?(subject.city)).to be_truthy
-      expect(address.include?(subject.state)).to be_truthy
     end
   end
 

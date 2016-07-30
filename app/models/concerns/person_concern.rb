@@ -80,6 +80,10 @@ module PersonConcern
     "#{first_name} #{last_name}"
   end
 
+  def address
+    "#{street} #{zip}, #{city}, #{state}"
+  end
+
   def state_name
     US_STATES[state]
   end

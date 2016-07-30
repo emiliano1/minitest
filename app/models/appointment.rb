@@ -6,7 +6,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :ailment
 
   delegate :name, to: :patient, prefix: true, allow_nil: true
-  delegate :name, to: :doctor, prefix: true, allow_nil: true
+  delegate :name, :address, to: :doctor, prefix: true, allow_nil: true
   delegate :name, to: :ailment, prefix: true, allow_nil: true
 
   validates :patient, presence: true

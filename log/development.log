@@ -6844,3 +6844,878 @@ ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
   [1m[35m (0.1ms)[0m  begin transaction
   [1m[36mAilment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble' LIMIT 1[0m
   [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePatients (20160522185323)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185323"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to CreateDoctors (20160522185340)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "doctors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "first_name" varchar, "last_name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160522185340"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to CreateAilments (20160729141803)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "ailments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "index_ailments_on_name" ON "ailments" ("name")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160729141803"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateSpecialties (20160729142053)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "specialties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.6ms)[0m  CREATE UNIQUE INDEX "index_specialties_on_name" ON "specialties" ("name")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160729142053"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Migrating to AddSpecialtyToDoctors (20160729142152)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "doctors" ADD "specialty_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_doctors_on_specialty_id" ON "doctors" ("specialty_id")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160729142152"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateJoinTableAilmentsSpecialties (20160729142446)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "ailments_specialties" ("ailment_id" integer NOT NULL, "specialty_id" integer NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_ailments_specialties_on_ailment_id_and_specialty_id" ON "ailments_specialties" ("ailment_id", "specialty_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_ailments_specialties_on_ailment_id_and_specialty_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_ailments_specialties_on_ailment_id_and_specialty_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_ailments_specialties_on_specialty_id_and_ailment_id" ON "ailments_specialties" ("specialty_id", "ailment_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160729142446"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to CreateAppointments (20160729143434)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "appointments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "patient_id" integer, "ailment_id" integer, "doctor_id" integer, "appointment_on" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_appointments_on_patient_id" ON "appointments" ("patient_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_appointments_on_ailment_id" ON "appointments" ("ailment_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_ailment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_ailment_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_appointments_on_doctor_id" ON "appointments" ("doctor_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160729143434"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_ailments_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_ailments_on_name' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_ailments_specialties_on_specialty_id_and_ailment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_ailments_specialties_on_specialty_id_and_ailment_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_ailments_specialties_on_ailment_id_and_specialty_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_ailments_specialties_on_ailment_id_and_specialty_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_doctor_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_doctor_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_ailment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_ailment_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_patient_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_doctors_on_specialty_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_doctors_on_specialty_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_specialties_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_specialties_on_name' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."name" = ? LIMIT 1  [["name", "Orthopedist"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:39.043972"], ["updated_at", "2016-07-30 22:07:39.043972"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."name" = ? LIMIT 1[0m  [["name", "Opthamologist"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:39.049189"], ["updated_at", "2016-07-30 22:07:39.049189"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.1ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."name" = ? LIMIT 1  [["name", "Cardiologist"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist"], ["created_at", "2016-07-30 22:07:39.053552"], ["updated_at", "2016-07-30 22:07:39.053552"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mAilment Load (0.2ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."name" = ? LIMIT 1[0m  [["name", "broken bones"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSpecialty Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones"], ["created_at", "2016-07-30 22:07:39.123176"], ["updated_at", "2016-07-30 22:07:39.123176"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."name" = ? LIMIT 1  [["name", "eye trouble"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Opthamologist' AND "specialties"."id" != 2) LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "eye trouble"], ["created_at", "2016-07-30 22:07:39.132138"], ["updated_at", "2016-07-30 22:07:39.132138"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 2], ["ailment_id", 2]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."name" = ? LIMIT 1[0m  [["name", "heart disease"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Cardiologist' AND "specialties"."id" != 3) LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "heart disease"], ["created_at", "2016-07-30 22:07:39.139412"], ["updated_at", "2016-07-30 22:07:39.139412"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)  [["specialty_id", 3], ["ailment_id", 3]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "bonnie_rempel@halvorsonterry.co"], ["first_name", "Eric"], ["last_name", "Dietrich"], ["street", "1615 Langosh Isle"], ["city", "Stehrview"], ["state", "NV"], ["zip", "41335-3273"], ["specialty_id", 3], ["created_at", "2016-07-30 22:07:39.783955"], ["updated_at", "2016-07-30 22:07:39.783955"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.5ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "adela_parisian@lueilwitz.biz"], ["first_name", "Zander"], ["last_name", "Quigley"], ["street", "2781 Giovanni Stream"], ["city", "Bertramfort"], ["state", "AL"], ["zip", "20298-8290"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:39.791248"], ["updated_at", "2016-07-30 22:07:39.791248"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "kane.bayer@hegmann.io"], ["first_name", "Norris"], ["last_name", "Heaney"], ["street", "2535 Arely Dale"], ["city", "North Eusebio"], ["state", "AR"], ["zip", "18922-1967"], ["specialty_id", 3], ["created_at", "2016-07-30 22:07:39.797743"], ["updated_at", "2016-07-30 22:07:39.797743"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jamarcus_greenfelder@dickinsonmclaughlin.io"], ["first_name", "Dayne"], ["last_name", "Rath"], ["street", "378 Lindgren Neck"], ["city", "Carrollberg"], ["state", "NV"], ["zip", "67327-7156"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:39.803454"], ["updated_at", "2016-07-30 22:07:39.803454"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "murl@batz.io"], ["first_name", "Jaylin"], ["last_name", "Stokes"], ["street", "105 Kayleigh Viaduct"], ["city", "South Amirfort"], ["state", "RI"], ["zip", "99468-7922"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:39.809181"], ["updated_at", "2016-07-30 22:07:39.809181"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "karley@bartoletti.name"], ["first_name", "Trever"], ["last_name", "Feeney"], ["street", "5665 Witting Meadows"], ["city", "West Elyssa"], ["state", "SC"], ["zip", "45543-0451"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:39.814969"], ["updated_at", "2016-07-30 22:07:39.814969"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.3ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "delmer@leannonwuckert.org"], ["first_name", "Macy"], ["last_name", "Hilll"], ["street", "180 Mattie River"], ["city", "Rachaelview"], ["state", "VT"], ["zip", "33835"], ["specialty_id", 3], ["created_at", "2016-07-30 22:07:39.820463"], ["updated_at", "2016-07-30 22:07:39.820463"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "daphnee@koelpin.io"], ["first_name", "Alan"], ["last_name", "Ferry"], ["street", "91059 Larson Gardens"], ["city", "Leschland"], ["state", "NV"], ["zip", "22191"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:39.826850"], ["updated_at", "2016-07-30 22:07:39.826850"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "junius.schumm@sauer.net"], ["first_name", "Carey"], ["last_name", "Mertz"], ["street", "7584 Crist Lane"], ["city", "North Enochville"], ["state", "PA"], ["zip", "35747-2802"], ["specialty_id", 3], ["created_at", "2016-07-30 22:07:39.832028"], ["updated_at", "2016-07-30 22:07:39.832028"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mSpecialty Load (0.2ms)[0m  SELECT  "specialties".* FROM "specialties"  ORDER BY RANDOM() LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "marty@green.name"], ["first_name", "Tina"], ["last_name", "Moen"], ["street", "6302 Frieda Rest"], ["city", "Wymantown"], ["state", "OK"], ["zip", "73931"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:39.837705"], ["updated_at", "2016-07-30 22:07:39.837705"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "heath_moen@auer.io"], ["first_name", "Emely"], ["last_name", "Hagenes"], ["street", "3002 Colleen Island"], ["city", "Jastport"], ["state", "MT"], ["zip", "94153"], ["created_at", "2016-07-30 22:07:39.861232"], ["updated_at", "2016-07-30 22:07:39.861232"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "bernadine_haley@stanton.org"], ["first_name", "Chris"], ["last_name", "O'Reilly"], ["street", "1032 Mckenzie Keys"], ["city", "Port Dovie"], ["state", "MO"], ["zip", "90802-1238"], ["created_at", "2016-07-30 22:07:39.865475"], ["updated_at", "2016-07-30 22:07:39.865475"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "georgette@runolfsdottir.net"], ["first_name", "Gene"], ["last_name", "Ruecker"], ["street", "96798 Icie Parkway"], ["city", "Jacobistad"], ["state", "UT"], ["zip", "43707"], ["created_at", "2016-07-30 22:07:39.869757"], ["updated_at", "2016-07-30 22:07:39.869757"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "antone.ortiz@effertz.name"], ["first_name", "Otilia"], ["last_name", "Johns"], ["street", "512 Litzy Well"], ["city", "North Ronville"], ["state", "OH"], ["zip", "36491"], ["created_at", "2016-07-30 22:07:39.874219"], ["updated_at", "2016-07-30 22:07:39.874219"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "rosalee@cole.com"], ["first_name", "Arnulfo"], ["last_name", "Williamson"], ["street", "986 Bernier Oval"], ["city", "Port Conor"], ["state", "AZ"], ["zip", "65450"], ["created_at", "2016-07-30 22:07:39.878430"], ["updated_at", "2016-07-30 22:07:39.878430"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "sydni@paucek.name"], ["first_name", "Boyd"], ["last_name", "Kreiger"], ["street", "70738 McClure Crescent"], ["city", "Krischester"], ["state", "MI"], ["zip", "21234-8754"], ["created_at", "2016-07-30 22:07:39.882664"], ["updated_at", "2016-07-30 22:07:39.882664"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "jovan@heathcote.com"], ["first_name", "Donnie"], ["last_name", "Swaniawski"], ["street", "76592 Kihn Rapids"], ["city", "East Willie"], ["state", "SC"], ["zip", "92673-1734"], ["created_at", "2016-07-30 22:07:39.887311"], ["updated_at", "2016-07-30 22:07:39.887311"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "vernon_senger@lindgrenspinka.io"], ["first_name", "Rosanna"], ["last_name", "Kozey"], ["street", "8060 Koelpin Centers"], ["city", "Erdmanton"], ["state", "NH"], ["zip", "74912-1930"], ["created_at", "2016-07-30 22:07:39.891360"], ["updated_at", "2016-07-30 22:07:39.891360"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "adrain@gerholdjerde.name"], ["first_name", "Julio"], ["last_name", "Kuvalis"], ["street", "330 Klocko Greens"], ["city", "Rauborough"], ["state", "OK"], ["zip", "78876"], ["created_at", "2016-07-30 22:07:39.896120"], ["updated_at", "2016-07-30 22:07:39.896120"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "elenor_oconnell@lesch.org"], ["first_name", "Adrienne"], ["last_name", "Dibbert"], ["street", "656 Lockman Groves"], ["city", "Petramouth"], ["state", "NC"], ["zip", "32276-2036"], ["created_at", "2016-07-30 22:07:39.900510"], ["updated_at", "2016-07-30 22:07:39.900510"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-30 19:12:11 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (0.8ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/apple-touch-icon-precomposed.png" for 127.0.0.1 at 2016-07-30 19:12:11 -0300
+
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon-precomposed.png"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (135.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (123.3ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (289.1ms)
+
+
+Started GET "/apple-touch-icon.png" for 127.0.0.1 at 2016-07-30 19:12:12 -0300
+
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.7ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (153.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (70.2ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (156.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-30 19:12:13 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2016-07-30 19:12:14 -0300
+Processing by AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.5ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  Rendered appointments/_list.html.erb (1.9ms)
+  Rendered appointments/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 89ms (Views: 82.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-07-30 19:12:14 -0300
+
+
+Started GET "/appointments" for 127.0.0.1 at 2016-07-30 19:12:15 -0300
+Processing by AppointmentsController#index as HTML
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT "appointments".* FROM "appointments"
+  Rendered appointments/_list.html.erb (0.6ms)
+  Rendered appointments/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2016-07-30 19:12:17 -0300
+Processing by AppointmentsController#new as HTML
+  [1m[36mPatient Load (0.4ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  [1m[35mAilment Load (0.2ms)[0m  SELECT "ailments".* FROM "ailments"
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" IS NULL[0m
+  Rendered appointments/_form.html.erb (47.0ms)
+  Rendered appointments/new.html.erb within layouts/application (57.6ms)
+Completed 200 OK in 121ms (Views: 114.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/doctors/appropriate-for/1" for 127.0.0.1 at 2016-07-30 19:12:21 -0300
+Processing by DoctorsController#appropriate_for as HTML
+  Parameters: {"ailment_id"=>"1"}
+  [1m[35mDoctor Load (0.3ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered doctors/appropriate_for.html.erb (12.9ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2016-07-30 19:12:26 -0300
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OinsCCx00GN9/toI6yL9D0iWwHtdjrXw218F7TqnHmEtPZqIAn0kTfKkDE7C0aHL9mPYAEMrNvlTMqrKuacwSA==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"7", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"22", "appointment_on(5i)"=>"00"}, "commit"=>"Create Appointment"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.2ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mDoctor Exists (0.4ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT "ailments".* FROM "ailments"[0m
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/_form.html.erb (9.3ms)
+  Rendered appointments/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 49ms (Views: 28.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2016-07-30 19:12:30 -0300
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EqPE/9e/jD0co/oT+b/hV3m075qhlNMruZLxVcwcMWYFt7J/+bZ4E5P5LFXQTL2Tx0H34b8xUCIx/15yTxwfTw==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"22", "appointment_on(5i)"=>"00"}, "commit"=>"Create Appointment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.0ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 10]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "doctor_id", "ailment_id", "appointment_on", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 2], ["doctor_id", 10], ["ailment_id", 1], ["appointment_on", "2016-08-30 22:00:00.000000"], ["created_at", "2016-07-30 22:12:30.917164"], ["updated_at", "2016-07-30 22:12:30.917164"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.3ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 18.3ms
+
+Sent mail to bernadine_haley@stanton.org, marty@green.name (20.6ms)
+Date: Sat, 30 Jul 2016 19:12:30 -0300
+From: from@example.com
+To: bernadine_haley@stanton.org, 
+ marty@green.name
+Message-ID: <579d264eeb255_14f63ff35dcd8b7069916@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Chris O&#39;Reilly<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Tina Moen<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/30/2016 @ 22:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (1.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 74ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:30 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 60ms (Views: 56.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:12:33 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mAilment Load (0.3ms)[0m  [1mSELECT "ailments".* FROM "ailments"[0m
+  [1m[35mDoctor Load (0.3ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/_form.html.erb (14.0ms)
+  Rendered appointments/edit.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 72ms (Views: 69.7ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:34 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5lvnMUPbJ8e5995MTINlY7Vxa3Fv6aBrjF5DG6AU2NbxT5GxbdLT6TatCAplcDmnC4RzCnFMI2IEM+w8IxT2/w==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"22", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.0ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 10]]
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 10ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:34 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.2ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-30 19:12:37 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/wolf/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:12:49 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.3ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mAilment Load (0.2ms)[0m  [1mSELECT "ailments".* FROM "ailments"[0m
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/_form.html.erb (10.2ms)
+  Rendered appointments/edit.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:50 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QNxJXrVByGP9y3UKe22aPKyaomhBXS5qw1L6W0RSXvtXyD/em0g8TXKRo0xSnsb4Em+6E1/4rWNLP1V8x1Jw0g==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"22", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.0ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 10]]
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 9ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:50 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:12:53 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT "ailments".* FROM "ailments"[0m
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.1ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/_form.html.erb (11.6ms)
+  Rendered appointments/edit.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 33ms (Views: 31.3ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:58 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"te22zigHOFmrBE/MVsgkEakOYzhQHE7+QJvfiY4YlESi+cBOBg7MdyRemYp/O3jVF/t7Q065zffI9nCuDRi6bQ==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"06", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.0ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.0ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 10]]
+  [1m[35mSQL (0.4ms)[0m  UPDATE "appointments" SET "appointment_on" = ?, "updated_at" = ? WHERE "appointments"."id" = ?  [["appointment_on", "2016-08-30 06:00:00.000000"], ["updated_at", "2016-07-30 22:12:58.431917"], ["id", 1]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.2ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 15.6ms
+
+Sent mail to bernadine_haley@stanton.org, marty@green.name (12.9ms)
+Date: Sat, 30 Jul 2016 19:12:58 -0300
+From: from@example.com
+To: bernadine_haley@stanton.org, 
+ marty@green.name
+Message-ID: <579d266a6e66b_14f63ff35dcd8b70700f4@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Chris O&#39;Reilly<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Tina Moen<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/30/2016 @ 06:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 42ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:12:58 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:14:43 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPatient Load (0.7ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  [1m[35mAilment Load (0.2ms)[0m  SELECT "ailments".* FROM "ailments"
+  [1m[36mDoctor Load (0.3ms)[0m  [1mSELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1[0m
+  [1m[35mSpecialty Load (0.1ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/_form.html.erb (73.9ms)
+  Rendered appointments/edit.html.erb within layouts/application (75.3ms)
+Completed 200 OK in 114ms (Views: 96.1ms | ActiveRecord: 3.0ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:14:47 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cjRdvKcu++F8Ph1fDmvlQj0lGi8WI7Rr6fsR+YS1MAxlICs8iScPz/NkyxknmLmGg9ACVAiGN2Jhlr7eB7UeJQ==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"08", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mDoctor Exists (0.2ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 10]]
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "appointments" SET "appointment_on" = ?, "updated_at" = ? WHERE "appointments"."id" = ?[0m  [["appointment_on", "2016-08-30 08:00:00.000000"], ["updated_at", "2016-07-30 22:14:47.352381"], ["id", 1]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.8ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 20.5ms
+
+Sent mail to bernadine_haley@stanton.org, marty@green.name (13.3ms)
+Date: Sat, 30 Jul 2016 19:14:47 -0300
+From: from@example.com
+To: bernadine_haley@stanton.org, 
+ marty@green.name
+Message-ID: <579d26d760528_14f63ff3598ffa5c7016c@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Chris O&#39;Reilly<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Tina Moen<br>
+  <strong>Address: </strong><br>
+  
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/30/2016 @ 08:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (1.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 79ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:14:47 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:15:46 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36mAilment Load (0.2ms)[0m  [1mSELECT "ailments".* FROM "ailments"[0m
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36mSpecialty Load (0.2ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/_form.html.erb (56.9ms)
+  Rendered appointments/edit.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 92ms (Views: 79.2ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:15:49 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z+Bllkb1FD8J9ieK1jVJu8RXJ929CSYxnghuqRavdjLY9BMWaPzgEYas8cz/xhV/eqI/pqOspTgWZcGOla9YGw==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"10", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPatient Load (0.5ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDoctor Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 10]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "appointments" SET "appointment_on" = ?, "updated_at" = ? WHERE "appointments"."id" = ?  [["appointment_on", "2016-08-30 10:00:00.000000"], ["updated_at", "2016-07-30 22:15:49.944160"], ["id", 1]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.3ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 19.2ms
+
+Sent mail to bernadine_haley@stanton.org, marty@green.name (13.2ms)
+Date: Sat, 30 Jul 2016 19:15:49 -0300
+From: from@example.com
+To: bernadine_haley@stanton.org, 
+ marty@green.name
+Message-ID: <579d2715f0094_14f63ff35be362e4702c7@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Chris O&#39;Reilly<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Tina Moen<br>
+  <strong>Address: </strong><br>
+  6302 Frieda Rest 73931, Wymantown, OK
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/30/2016 @ 10:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 81ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:15:50 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.1ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 28ms (Views: 26.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/appointments/1/edit" for 127.0.0.1 at 2016-07-30 19:16:17 -0300
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPatient Load (0.3ms)[0m  [1mSELECT "patients".* FROM "patients"[0m
+  [1m[35mAilment Load (0.1ms)[0m  SELECT "ailments".* FROM "ailments"
+  [1m[36mDoctor Load (0.3ms)[0m  [1mSELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1[0m
+  [1m[35mSpecialty Load (0.1ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "specialties".* FROM "specialties" WHERE "specialties"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/_form.html.erb (10.1ms)
+  Rendered appointments/edit.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/appointments/1" for 127.0.0.1 at 2016-07-30 19:16:20 -0300
+Processing by AppointmentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3Z/brL3W4FamqE+F3jV20Hbn71euU6qRvNGWHqu7DMLKi60sk98UeCnymcP3xioUyBL3LLD2KZg0vDk5KLsi6w==", "appointment"=>{"patient_id"=>"2", "ailment_id"=>"1", "doctor_id"=>"10", "appointment_on(1i)"=>"2016", "appointment_on(2i)"=>"8", "appointment_on(3i)"=>"30", "appointment_on(4i)"=>"12", "appointment_on(5i)"=>"00"}, "commit"=>"Update Appointment", "id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mPatient Load (0.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mAilment Load (0.0ms)[0m  [1mSELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 10]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "appointments" SET "appointment_on" = ?, "updated_at" = ? WHERE "appointments"."id" = ?[0m  [["appointment_on", "2016-08-30 12:00:00.000000"], ["updated_at", "2016-07-30 22:16:20.697242"], ["id", 1]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.8ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 17.6ms
+
+Sent mail to bernadine_haley@stanton.org, marty@green.name (16.0ms)
+Date: Sat, 30 Jul 2016 19:16:20 -0300
+From: from@example.com
+To: bernadine_haley@stanton.org, 
+ marty@green.name
+Message-ID: <579d2734af6ad_14f63ff35be362e470355@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Chris O&#39;Reilly<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Tina Moen<br>
+  6302 Frieda Rest 73931, Wymantown, OK
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/30/2016 @ 12:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/appointments/1
+Completed 302 Found in 47ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/appointments/1" for 127.0.0.1 at 2016-07-30 19:16:20 -0300
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mAilment Load (0.1ms)[0m  SELECT  "ailments".* FROM "ailments" WHERE "ailments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered appointments/show.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 31ms (Views: 28.9ms | ActiveRecord: 0.5ms)

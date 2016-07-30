@@ -21930,3 +21930,1261 @@ Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.1ms)
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
   [1m[35m (0.1ms)[0m  begin transaction
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (93.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "malinda@fadel.biz"], ["first_name", "Delbert"], ["last_name", "Yundt"], ["street", "9502 Dibbert Point"], ["city", "Baileystad"], ["state", "NH"], ["zip", "31650"], ["created_at", "2016-07-30 22:07:56.046598"], ["updated_at", "2016-07-30 22:07:56.046598"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#index as HTML
+  Rendered doctors/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 180ms (Views: 179.2ms | ActiveRecord: 0.0ms)
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors"
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "adalberto_harber@kirlin.info"], ["first_name", "Elton"], ["last_name", "Frami"], ["street", "59576 Erna Square"], ["city", "Kundeshire"], ["state", "NY"], ["zip", "48266"], ["created_at", "2016-07-30 22:07:56.527023"], ["updated_at", "2016-07-30 22:07:56.527023"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered doctors/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 115ms (Views: 39.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by DoctorsController#new as HTML
+  Rendered doctors/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 28ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "fannie@willms.com"], ["first_name", "Leilani"], ["last_name", "Stracke"], ["street", "5443 Lew Lakes"], ["city", "East Dakota"], ["state", "NH"], ["zip", "43557-7246"], ["created_at", "2016-07-30 22:07:56.680426"], ["updated_at", "2016-07-30 22:07:56.680426"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered doctors/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "doctors"[0m
+Processing by DoctorsController#create as HTML
+  Parameters: {"doctor"=>{"email"=>"graham.mayer@bins.biz", "first_name"=>"Zola", "last_name"=>"Watsica", "street"=>"4332 Ferry Orchard", "city"=>"Roselynton", "state"=>"MN", "zip"=>"31522-0801"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "graham.mayer@bins.biz"], ["first_name", "Zola"], ["last_name", "Watsica"], ["street", "4332 Ferry Orchard"], ["city", "Roselynton"], ["state", "MN"], ["zip", "31522-0801"], ["created_at", "2016-07-30 22:07:56.741771"], ["updated_at", "2016-07-30 22:07:56.741771"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "doctors"[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DoctorsController#create as HTML
+  Parameters: {"doctor"=>{"email"=>"josefina@skiles.name", "first_name"=>"Magali", "last_name"=>"Kris", "street"=>"573 Jacobson Ville", "city"=>"Lake Silas", "state"=>"MA", "zip"=>"63510-9183"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "josefina@skiles.name"], ["first_name", "Magali"], ["last_name", "Kris"], ["street", "573 Jacobson Ville"], ["city", "Lake Silas"], ["state", "MA"], ["zip", "63510-9183"], ["created_at", "2016-07-30 22:07:56.751820"], ["updated_at", "2016-07-30 22:07:56.751820"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by DoctorsController#create as HTML
+  Parameters: {"doctor"=>{"email"=>"ned_kertzmann@champlin.com", "first_name"=>"Judah", "last_name"=>"Kutch", "street"=>"31482 Athena Viaduct", "city"=>"West Max", "state"=>"WY", "zip"=>"97702-3101"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "ned_kertzmann@champlin.com"], ["first_name", "Judah"], ["last_name", "Kutch"], ["street", "31482 Athena Viaduct"], ["city", "West Max"], ["state", "WY"], ["zip", "97702-3101"], ["created_at", "2016-07-30 22:07:56.762339"], ["updated_at", "2016-07-30 22:07:56.762339"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors"  ORDER BY "doctors"."id" DESC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by DoctorsController#create as HTML
+  Parameters: {"doctor"=>{"email"=>"invalid_email", "first_name"=>"Ayden", "last_name"=>"Purdy", "street"=>"9298 Margarete Ridge", "city"=>"North Johanside", "state"=>"OR", "zip"=>"81481"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered doctors/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by DoctorsController#create as HTML
+  Parameters: {"doctor"=>{"email"=>"invalid_email", "first_name"=>"Tabitha", "last_name"=>"Farrell", "street"=>"255 Schinner Wall", "city"=>"Dickensview", "state"=>"MN", "zip"=>"18308"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered doctors/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jadyn@goyette.org"], ["first_name", "Emory"], ["last_name", "Emard"], ["street", "233 Virgil Mews"], ["city", "Legrosland"], ["state", "GA"], ["zip", "95375"], ["created_at", "2016-07-30 22:07:56.785592"], ["updated_at", "2016-07-30 22:07:56.785592"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#update as HTML
+  Parameters: {"doctor"=>{"first_name"=>"John", "last_name"=>"Doe"}, "id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "doctors" SET "first_name" = ?, "last_name" = ?, "updated_at" = ? WHERE "doctors"."id" = ?  [["first_name", "John"], ["last_name", "Doe"], ["updated_at", "2016-07-30 22:07:56.790922"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35mDoctor Load (0.0ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "makenzie.fadel@wisoky.io"], ["first_name", "Cale"], ["last_name", "Lueilwitz"], ["street", "2490 Kole Lodge"], ["city", "Murphyborough"], ["state", "ND"], ["zip", "82678"], ["created_at", "2016-07-30 22:07:56.799572"], ["updated_at", "2016-07-30 22:07:56.799572"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#update as HTML
+  Parameters: {"doctor"=>{"email"=>"makenzie.fadel@wisoky.io", "first_name"=>"Cale", "last_name"=>"Lueilwitz", "street"=>"2490 Kole Lodge", "city"=>"Murphyborough", "state"=>"ND", "zip"=>"82678"}, "id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "axel@brown.io"], ["first_name", "Jade"], ["last_name", "Goodwin"], ["street", "853 Casper Bridge"], ["city", "West Breannaburgh"], ["state", "IL"], ["zip", "30647-0540"], ["created_at", "2016-07-30 22:07:56.811766"], ["updated_at", "2016-07-30 22:07:56.811766"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#update as HTML
+  Parameters: {"doctor"=>{"email"=>"axel@brown.io", "first_name"=>"Jade", "last_name"=>"Goodwin", "street"=>"853 Casper Bridge", "city"=>"West Breannaburgh", "state"=>"IL", "zip"=>"30647-0540"}, "id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "meghan@sipesbaumbach.io"], ["first_name", "Delores"], ["last_name", "Moore"], ["street", "18411 Liliana Trail"], ["city", "Matteomouth"], ["state", "IA"], ["zip", "81342"], ["created_at", "2016-07-30 22:07:56.822932"], ["updated_at", "2016-07-30 22:07:56.822932"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#update as HTML
+  Parameters: {"doctor"=>{"email"=>"invalid_email", "first_name"=>"Nova", "last_name"=>"Baumbach", "street"=>"90203 Tess Point", "city"=>"East Fredrick", "state"=>"CO", "zip"=>"41302-0984"}, "id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered doctors/edit.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "loma_torphy@hartmann.co"], ["first_name", "Ardith"], ["last_name", "Russel"], ["street", "35563 Rosenbaum Mountain"], ["city", "North Tyson"], ["state", "AZ"], ["zip", "57631"], ["created_at", "2016-07-30 22:07:56.835693"], ["updated_at", "2016-07-30 22:07:56.835693"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#update as HTML
+  Parameters: {"doctor"=>{"email"=>"invalid_email", "first_name"=>"Janiya", "last_name"=>"Dicki", "street"=>"7118 Neha Flat", "city"=>"Billburgh", "state"=>"MT", "zip"=>"63125"}, "id"=>"1"}
+  [1m[35mDoctor Load (0.1ms)[0m  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered doctors/edit.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "nova_schuster@muellerwilliamson.org"], ["first_name", "Victoria"], ["last_name", "Boyer"], ["street", "4364 Herman Flat"], ["city", "Alexysstad"], ["state", "AL"], ["zip", "39377"], ["created_at", "2016-07-30 22:07:56.847126"], ["updated_at", "2016-07-30 22:07:56.847126"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "doctors"
+Processing by DoctorsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.1ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "doctors" WHERE "doctors"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "doctors"[0m
+  [1m[35m (1.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "karianne_grimes@langosh.org"], ["first_name", "Stacey"], ["last_name", "Paucek"], ["street", "562 Thompson Inlet"], ["city", "North Noelia"], ["state", "VA"], ["zip", "37526-9190"], ["created_at", "2016-07-30 22:07:56.859101"], ["updated_at", "2016-07-30 22:07:56.859101"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DoctorsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoctor Load (0.0ms)[0m  [1mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "doctors" WHERE "doctors"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/doctors
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.4ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:56.915795"], ["updated_at", "2016-07-30 22:07:56.915795"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:56.918734"], ["updated_at", "2016-07-30 22:07:56.918734"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1
+  [1m[36mAilment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease93' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "heart disease93"], ["created_at", "2016-07-30 22:07:56.958222"], ["updated_at", "2016-07-30 22:07:56.958222"]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "berry.johnston@green.org"], ["first_name", "Augusta"], ["last_name", "Moore"], ["street", "17131 Alexandre Union"], ["city", "New Madalynland"], ["state", "WI"], ["zip", "95236"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:56.964974"], ["updated_at", "2016-07-30 22:07:56.964974"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "berry.johnston@green.org"], ["first_name", "Augusta"], ["last_name", "Moore"], ["street", "17131 Alexandre Union"], ["city", "New Madalynland"], ["state", "WI"], ["zip", "95236"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:56.967221"], ["updated_at", "2016-07-30 22:07:56.967221"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "berry.johnston@green.org"], ["first_name", "Augusta"], ["last_name", "Moore"], ["street", "17131 Alexandre Union"], ["city", "New Madalynland"], ["state", "WI"], ["zip", "95236"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:56.969290"], ["updated_at", "2016-07-30 22:07:56.969290"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DoctorsController#appropriate_for as HTML
+  Parameters: {"ailment_id"=>"1"}
+  Rendered doctors/appropriate_for.html.erb (0.3ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+  [1m[35mDoctor Load (0.2ms)[0m  SELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "chesley.padberg@carrollhegmann.org"], ["first_name", "Abdullah"], ["last_name", "Green"], ["street", "80895 Gusikowski Knolls"], ["city", "Cummerataland"], ["state", "TN"], ["zip", "79487"], ["created_at", "2016-07-30 22:07:57.018233"], ["updated_at", "2016-07-30 22:07:57.018233"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#index as HTML
+  Rendered patients/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+  [1m[35mPatient Load (0.4ms)[0m  SELECT "patients".* FROM "patients"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "ephraim_mccullough@schiller.name"], ["first_name", "Gail"], ["last_name", "Walsh"], ["street", "2830 Muller Centers"], ["city", "North Suzanneborough"], ["state", "NC"], ["zip", "69452-4465"], ["created_at", "2016-07-30 22:07:57.036281"], ["updated_at", "2016-07-30 22:07:57.036281"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.3ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PatientsController#new as HTML
+  Rendered patients/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "cielo_marquardt@riceyost.com"], ["first_name", "Niko"], ["last_name", "Schowalter"], ["street", "23299 Kimberly Via"], ["city", "Lake Lorenzoview"], ["state", "FL"], ["zip", "20141"], ["created_at", "2016-07-30 22:07:57.071859"], ["updated_at", "2016-07-30 22:07:57.071859"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPatient Load (0.0ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered patients/edit.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"chadrick@hirthe.biz", "first_name"=>"Guadalupe", "last_name"=>"Lakin", "street"=>"7011 Bradtke Greens", "city"=>"Jamilmouth", "state"=>"MT", "zip"=>"37670-1382"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "chadrick@hirthe.biz"], ["first_name", "Guadalupe"], ["last_name", "Lakin"], ["street", "7011 Bradtke Greens"], ["city", "Jamilmouth"], ["state", "MT"], ["zip", "37670-1382"], ["created_at", "2016-07-30 22:07:57.084698"], ["updated_at", "2016-07-30 22:07:57.084698"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"verner_homenick@heller.io", "first_name"=>"Luna", "last_name"=>"Halvorson", "street"=>"86496 Herzog Viaduct", "city"=>"Jaredtown", "state"=>"IA", "zip"=>"33712-1277"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "verner_homenick@heller.io"], ["first_name", "Luna"], ["last_name", "Halvorson"], ["street", "86496 Herzog Viaduct"], ["city", "Jaredtown"], ["state", "IA"], ["zip", "33712-1277"], ["created_at", "2016-07-30 22:07:57.095219"], ["updated_at", "2016-07-30 22:07:57.095219"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"brayan_buckridge@connelly.net", "first_name"=>"Ruthe", "last_name"=>"Murphy", "street"=>"9291 White Locks", "city"=>"West Nathanial", "state"=>"AR", "zip"=>"49420"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "brayan_buckridge@connelly.net"], ["first_name", "Ruthe"], ["last_name", "Murphy"], ["street", "9291 White Locks"], ["city", "West Nathanial"], ["state", "AR"], ["zip", "49420"], ["created_at", "2016-07-30 22:07:57.104391"], ["updated_at", "2016-07-30 22:07:57.104391"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/patients/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"invalid_email", "first_name"=>"Elwyn", "last_name"=>"Welch", "street"=>"76144 Krystal Common", "city"=>"South Jarrodland", "state"=>"OH", "zip"=>"89296-3084"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered patients/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"invalid_email", "first_name"=>"Dagmar", "last_name"=>"Terry", "street"=>"109 Elbert Prairie", "city"=>"Hilllville", "state"=>"ME", "zip"=>"73431"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered patients/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jeff@rolfson.com"], ["first_name", "Braeden"], ["last_name", "Blanda"], ["street", "71654 Rhianna Oval"], ["city", "North Rigoberto"], ["state", "CO"], ["zip", "90754-0372"], ["created_at", "2016-07-30 22:07:57.129030"], ["updated_at", "2016-07-30 22:07:57.129030"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#update as HTML
+  Parameters: {"patient"=>{"first_name"=>"John", "last_name"=>"Doe"}, "id"=>"1"}
+  [1m[35mPatient Load (0.0ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "patients" SET "first_name" = ?, "last_name" = ?, "updated_at" = ? WHERE "patients"."id" = ?  [["first_name", "John"], ["last_name", "Doe"], ["updated_at", "2016-07-30 22:07:57.133359"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/patients/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+  [1m[35mPatient Load (0.2ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "maxime_romaguera@hand.co"], ["first_name", "Elouise"], ["last_name", "Mitchell"], ["street", "573 Bethany Underpass"], ["city", "Kerlukestad"], ["state", "OR"], ["zip", "41637"], ["created_at", "2016-07-30 22:07:57.142786"], ["updated_at", "2016-07-30 22:07:57.142786"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#update as HTML
+  Parameters: {"patient"=>{"email"=>"maxime_romaguera@hand.co", "first_name"=>"Elouise", "last_name"=>"Mitchell", "street"=>"573 Bethany Underpass", "city"=>"Kerlukestad", "state"=>"OR", "zip"=>"41637"}, "id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients/1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "karley@langworth.io"], ["first_name", "Wendell"], ["last_name", "Parker"], ["street", "40757 Denesik Freeway"], ["city", "Boehmmouth"], ["state", "OH"], ["zip", "42540-4077"], ["created_at", "2016-07-30 22:07:57.153811"], ["updated_at", "2016-07-30 22:07:57.153811"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#update as HTML
+  Parameters: {"patient"=>{"email"=>"karley@langworth.io", "first_name"=>"Wendell", "last_name"=>"Parker", "street"=>"40757 Denesik Freeway", "city"=>"Boehmmouth", "state"=>"OH", "zip"=>"42540-4077"}, "id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients/1
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jee_bauch@greenholt.com"], ["first_name", "Omer"], ["last_name", "Glover"], ["street", "808 Kshlerin Road"], ["city", "Alyssonshire"], ["state", "HI"], ["zip", "57723"], ["created_at", "2016-07-30 22:07:57.168228"], ["updated_at", "2016-07-30 22:07:57.168228"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#update as HTML
+  Parameters: {"patient"=>{"email"=>"invalid_email", "first_name"=>"Richmond", "last_name"=>"Schumm", "street"=>"68540 Blaze Crossing", "city"=>"West Larue", "state"=>"NJ", "zip"=>"70631"}, "id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered patients/edit.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "frida@mcdermott.net"], ["first_name", "Ephraim"], ["last_name", "Lang"], ["street", "1867 Daugherty Well"], ["city", "Port Elveraton"], ["state", "TN"], ["zip", "83506-5579"], ["created_at", "2016-07-30 22:07:57.179841"], ["updated_at", "2016-07-30 22:07:57.179841"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by PatientsController#update as HTML
+  Parameters: {"patient"=>{"email"=>"invalid_email", "first_name"=>"Darrion", "last_name"=>"Schoen", "street"=>"914 Mazie Inlet", "city"=>"East Kathryn", "state"=>"AK", "zip"=>"79040"}, "id"=>"1"}
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered patients/edit.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "magdalen.hoppe@cormierkohler.info"], ["first_name", "Billy"], ["last_name", "Price"], ["street", "727 Annamae Harbors"], ["city", "Barrowschester"], ["state", "KY"], ["zip", "56478-2546"], ["created_at", "2016-07-30 22:07:57.193549"], ["updated_at", "2016-07-30 22:07:57.193549"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "patients"
+Processing by PatientsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "patients" WHERE "patients"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "lucas@erdman.co"], ["first_name", "Rubie"], ["last_name", "Swaniawski"], ["street", "632 Hintz Isle"], ["city", "Bogisichhaven"], ["state", "DE"], ["zip", "91771-3863"], ["created_at", "2016-07-30 22:07:57.204953"], ["updated_at", "2016-07-30 22:07:57.204953"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by PatientsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "patients" WHERE "patients"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/patients
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist3' LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble91' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "eye trouble91"], ["created_at", "2016-07-30 22:07:57.218081"], ["updated_at", "2016-07-30 22:07:57.218081"]]
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist3' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Opthamologist3"], ["created_at", "2016-07-30 22:07:57.220141"], ["updated_at", "2016-07-30 22:07:57.220141"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)[0m  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE ("ailments"."name" = 'eye trouble91' AND "ailments"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist54' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble84' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "eye trouble84"], ["created_at", "2016-07-30 22:07:57.230732"], ["updated_at", "2016-07-30 22:07:57.230732"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist54' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist54"], ["created_at", "2016-07-30 22:07:57.234415"], ["updated_at", "2016-07-30 22:07:57.234415"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist53' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease59' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "heart disease59"], ["created_at", "2016-07-30 22:07:57.244087"], ["updated_at", "2016-07-30 22:07:57.244087"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist53' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist53"], ["created_at", "2016-07-30 22:07:57.246783"], ["updated_at", "2016-07-30 22:07:57.246783"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "herman@ebert.biz"], ["first_name", "Erwin"], ["last_name", "Kessler"], ["street", "78041 Grady River"], ["city", "Hansenview"], ["state", "CO"], ["zip", "73116"], ["created_at", "2016-07-30 22:07:57.261269"], ["updated_at", "2016-07-30 22:07:57.261269"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist98' LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease72' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "heart disease72"], ["created_at", "2016-07-30 22:07:57.267438"], ["updated_at", "2016-07-30 22:07:57.267438"]]
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist98' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Opthamologist98"], ["created_at", "2016-07-30 22:07:57.270567"], ["updated_at", "2016-07-30 22:07:57.270567"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)[0m  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "doris_daniel@kemmer.biz"], ["first_name", "Cameron"], ["last_name", "Leannon"], ["street", "790 Heidenreich Dam"], ["city", "Scarlettbury"], ["state", "ID"], ["zip", "95705"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.279309"], ["updated_at", "2016-07-30 22:07:57.279309"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDoctor Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 1]]
+  [1m[35mSQL (9.3ms)[0m  INSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-02 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.286208"], ["updated_at", "2016-07-30 22:07:57.286208"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (41.8ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 261.8ms
+
+Sent mail to herman@ebert.biz, doris_daniel@kemmer.biz (7.9ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: herman@ebert.biz, 
+ doris_daniel@kemmer.biz
+Message-ID: <579d253d9a4d7_24c53ffcf905e20065892@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Erwin Kessler<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Cameron Leannon<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/02/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "lance.cormier@brakus.co"], ["first_name", "Vinnie"], ["last_name", "Borer"], ["street", "656 Percival Hill"], ["city", "North Alizefurt"], ["state", "MO"], ["zip", "54012-2830"], ["created_at", "2016-07-30 22:07:57.642018"], ["updated_at", "2016-07-30 22:07:57.642018"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist36' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble88' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "eye trouble88"], ["created_at", "2016-07-30 22:07:57.648001"], ["updated_at", "2016-07-30 22:07:57.648001"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist36' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist36"], ["created_at", "2016-07-30 22:07:57.650668"], ["updated_at", "2016-07-30 22:07:57.650668"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "haven_hyatt@schaden.io"], ["first_name", "Shea"], ["last_name", "Bogan"], ["street", "991 Keebler Plain"], ["city", "East Garrickmouth"], ["state", "ID"], ["zip", "84848-5558"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.656989"], ["updated_at", "2016-07-30 22:07:57.656989"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-07 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.661330"], ["updated_at", "2016-07-30 22:07:57.661330"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.1ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.4ms
+
+Sent mail to lance.cormier@brakus.co, haven_hyatt@schaden.io (2.4ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: lance.cormier@brakus.co, 
+ haven_hyatt@schaden.io
+Message-ID: <579d253da2643_24c53ffcf905e200659e9@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Vinnie Borer<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Shea Bogan<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/07/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "hugh_beer@christiansen.io"], ["first_name", "Roma"], ["last_name", "Schroeder"], ["street", "3769 Fahey Throughway"], ["city", "Port Beulah"], ["state", "MI"], ["zip", "64938-8253"], ["created_at", "2016-07-30 22:07:57.670954"], ["updated_at", "2016-07-30 22:07:57.670954"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist46' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones68' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones68"], ["created_at", "2016-07-30 22:07:57.675804"], ["updated_at", "2016-07-30 22:07:57.675804"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist46' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist46"], ["created_at", "2016-07-30 22:07:57.677490"], ["updated_at", "2016-07-30 22:07:57.677490"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "corbin@kreigerfritsch.co"], ["first_name", "Letha"], ["last_name", "Nicolas"], ["street", "24946 Johnston Parks"], ["city", "West Andrew"], ["state", "TX"], ["zip", "26032"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.682842"], ["updated_at", "2016-07-30 22:07:57.682842"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-06 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.686902"], ["updated_at", "2016-07-30 22:07:57.686902"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.2ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 2.0ms
+
+Sent mail to hugh_beer@christiansen.io, corbin@kreigerfritsch.co (2.5ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: hugh_beer@christiansen.io, 
+ corbin@kreigerfritsch.co
+Message-ID: <579d253da8cee_24c53ffcf905e2006608f@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Roma Schroeder<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Letha Nicolas<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/06/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "nathanial@lueilwitz.co"], ["first_name", "Odell"], ["last_name", "Rippin"], ["street", "991 Paula Trail"], ["city", "Lake Cierrafort"], ["state", "OK"], ["zip", "95144-4550"], ["created_at", "2016-07-30 22:07:57.697805"], ["updated_at", "2016-07-30 22:07:57.697805"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist59' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones14' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones14"], ["created_at", "2016-07-30 22:07:57.702776"], ["updated_at", "2016-07-30 22:07:57.702776"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist59' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist59"], ["created_at", "2016-07-30 22:07:57.704447"], ["updated_at", "2016-07-30 22:07:57.704447"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mavis_runolfsdottir@hettinger.com"], ["first_name", "Sigurd"], ["last_name", "Padberg"], ["street", "51046 Rosemarie Dam"], ["city", "Pollichfort"], ["state", "NY"], ["zip", "98165"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.710444"], ["updated_at", "2016-07-30 22:07:57.710444"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-09 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.714617"], ["updated_at", "2016-07-30 22:07:57.714617"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.1ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.3ms
+
+Sent mail to nathanial@lueilwitz.co, mavis_runolfsdottir@hettinger.com (2.3ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: nathanial@lueilwitz.co, 
+ mavis_runolfsdottir@hettinger.com
+Message-ID: <579d253daf73d_24c53ffcf905e20066161@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Odell Rippin<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Sigurd Padberg<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/09/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist14' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist14"], ["created_at", "2016-07-30 22:07:57.724887"], ["updated_at", "2016-07-30 22:07:57.724887"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Opthamologist14' AND "specialties"."id" != 1) LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones65' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "broken bones65"], ["created_at", "2016-07-30 22:07:57.729002"], ["updated_at", "2016-07-30 22:07:57.729002"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "trinity_heaney@steuberbartoletti.info"], ["first_name", "Tiara"], ["last_name", "Durgan"], ["street", "7784 Adele Extensions"], ["city", "Quintenchester"], ["state", "MA"], ["zip", "69212-9897"], ["created_at", "2016-07-30 22:07:57.733500"], ["updated_at", "2016-07-30 22:07:57.733500"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "ila_abshire@emmerich.co"], ["first_name", "Coty"], ["last_name", "Schultz"], ["street", "29559 Altenwerth Summit"], ["city", "Port Avery"], ["state", "KS"], ["zip", "47379"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.737026"], ["updated_at", "2016-07-30 22:07:57.737026"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-08 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.742034"], ["updated_at", "2016-07-30 22:07:57.742034"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.2ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.7ms
+
+Sent mail to trinity_heaney@steuberbartoletti.info, ila_abshire@emmerich.co (2.6ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: trinity_heaney@steuberbartoletti.info, 
+ ila_abshire@emmerich.co
+Message-ID: <579d253db640d_24c53ffcf905e20066241@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Tiara Durgan<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Coty Schultz<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/08/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "garth@mcglynn.biz"], ["first_name", "Nora"], ["last_name", "Osinski"], ["street", "75573 Heidenreich Tunnel"], ["city", "Schmidthaven"], ["state", "VA"], ["zip", "70672-1632"], ["created_at", "2016-07-30 22:07:57.752142"], ["updated_at", "2016-07-30 22:07:57.752142"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist88' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease50' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "heart disease50"], ["created_at", "2016-07-30 22:07:57.757612"], ["updated_at", "2016-07-30 22:07:57.757612"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist88' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist88"], ["created_at", "2016-07-30 22:07:57.760390"], ["updated_at", "2016-07-30 22:07:57.760390"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "marquise.tremblay@murazikauer.biz"], ["first_name", "Kailee"], ["last_name", "Mayert"], ["street", "58087 Tyson Expressway"], ["city", "Lake Joannebury"], ["state", "SD"], ["zip", "58158"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.764890"], ["updated_at", "2016-07-30 22:07:57.764890"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "rashad@koelpinokuneva.io"], ["first_name", "Chet"], ["last_name", "Kertzmann"], ["street", "51080 Kautzer Cape"], ["city", "New Jeffryborough"], ["state", "ME"], ["zip", "31472"], ["created_at", "2016-07-30 22:07:57.768510"], ["updated_at", "2016-07-30 22:07:57.768510"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist66' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble12' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "eye trouble12"], ["created_at", "2016-07-30 22:07:57.773915"], ["updated_at", "2016-07-30 22:07:57.773915"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist66' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist66"], ["created_at", "2016-07-30 22:07:57.775458"], ["updated_at", "2016-07-30 22:07:57.775458"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 2], ["specialty_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "liam_effertz@zemlak.org"], ["first_name", "Victoria"], ["last_name", "Effertz"], ["street", "80233 Jeramie Islands"], ["city", "Coltonton"], ["state", "MI"], ["zip", "83887"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:57.780715"], ["updated_at", "2016-07-30 22:07:57.780715"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "santina@dibbert.info"], ["first_name", "June"], ["last_name", "Reinger"], ["street", "3301 Shanahan Cove"], ["city", "West Mason"], ["state", "OK"], ["zip", "22260-9588"], ["created_at", "2016-07-30 22:07:57.784279"], ["updated_at", "2016-07-30 22:07:57.784279"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist62' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease10' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "heart disease10"], ["created_at", "2016-07-30 22:07:57.788124"], ["updated_at", "2016-07-30 22:07:57.788124"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist62' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist62"], ["created_at", "2016-07-30 22:07:57.789567"], ["updated_at", "2016-07-30 22:07:57.789567"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 3], ["specialty_id", 3]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "ollie_morar@brakusorn.org"], ["first_name", "Pedro"], ["last_name", "Hoppe"], ["street", "3101 O'Reilly Islands"], ["city", "West Serenityborough"], ["state", "NY"], ["zip", "82016-4763"], ["specialty_id", 3], ["created_at", "2016-07-30 22:07:57.794767"], ["updated_at", "2016-07-30 22:07:57.794767"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "michaela@bogan.co"], ["first_name", "Karen"], ["last_name", "Breitenberg"], ["street", "28361 Rempel Knoll"], ["city", "Lake Jaunita"], ["state", "NY"], ["zip", "63855-1928"], ["created_at", "2016-07-30 22:07:57.798456"], ["updated_at", "2016-07-30 22:07:57.798456"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist0' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble95' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "eye trouble95"], ["created_at", "2016-07-30 22:07:57.802576"], ["updated_at", "2016-07-30 22:07:57.802576"]]
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist0' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist0"], ["created_at", "2016-07-30 22:07:57.804072"], ["updated_at", "2016-07-30 22:07:57.804072"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 4], ["specialty_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "eileen.mraz@dibbertchristiansen.info"], ["first_name", "Finn"], ["last_name", "Turner"], ["street", "7046 Wiegand Port"], ["city", "Lake Adolph"], ["state", "MO"], ["zip", "46527-0153"], ["specialty_id", 4], ["created_at", "2016-07-30 22:07:57.808269"], ["updated_at", "2016-07-30 22:07:57.808269"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 1]]
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 2], ["id", 2]]
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 3], ["id", 3]]
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 4], ["id", 4]]
+  [1m[36m (1.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:57.820979"], ["updated_at", "2016-07-30 22:07:57.820979"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:57.824035"], ["updated_at", "2016-07-30 22:07:57.824035"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'eye trouble87' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "eye trouble87"], ["created_at", "2016-07-30 22:07:57.829962"], ["updated_at", "2016-07-30 22:07:57.829962"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "osborne_oconnell@gusikowski.io"], ["first_name", "Cindy"], ["last_name", "Okuneva"], ["street", "457 Donnelly River"], ["city", "Robeltown"], ["state", "IN"], ["zip", "43453-1667"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:57.834593"], ["updated_at", "2016-07-30 22:07:57.834593"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "colin@aufderhar.org"], ["first_name", "Eleazar"], ["last_name", "Morissette"], ["street", "237 Schinner Groves"], ["city", "East Kenton"], ["state", "WY"], ["zip", "57377"], ["created_at", "2016-07-30 22:07:57.837200"], ["updated_at", "2016-07-30 22:07:57.837200"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "haan.beer@fadel.org"], ["first_name", "Chloe"], ["last_name", "Lockman"], ["street", "343 Garnett Park"], ["city", "East Ashlynn"], ["state", "SC"], ["zip", "15536"], ["created_at", "2016-07-30 22:07:57.839971"], ["updated_at", "2016-07-30 22:07:57.839971"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "brenna.schuster@homenickbatz.biz"], ["first_name", "Breana"], ["last_name", "Ankunding"], ["street", "41709 Cummerata Trace"], ["city", "Lake Jettie"], ["state", "AZ"], ["zip", "42530-5453"], ["created_at", "2016-07-30 22:07:57.843967"], ["updated_at", "2016-07-30 22:07:57.843967"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDoctor Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1[0m  [["ailment_id", 1], ["id", 1]]
+  [1m[35mDoctor Exists (0.0ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 2]]
+  [1m[36m (1.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "soledad@rippin.info"], ["first_name", "Cierra"], ["last_name", "Crona"], ["street", "8862 Lafayette Islands"], ["city", "Johnsburgh"], ["state", "PA"], ["zip", "10052"], ["created_at", "2016-07-30 22:07:57.853492"], ["updated_at", "2016-07-30 22:07:57.853492"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist51' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones96' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones96"], ["created_at", "2016-07-30 22:07:57.858535"], ["updated_at", "2016-07-30 22:07:57.858535"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist51' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Cardiologist51"], ["created_at", "2016-07-30 22:07:57.860748"], ["updated_at", "2016-07-30 22:07:57.860748"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "pearl.kohler@okonhahn.biz"], ["first_name", "Angela"], ["last_name", "Heathcote"], ["street", "502 Kassulke Trafficway"], ["city", "Kuvaliston"], ["state", "ID"], ["zip", "75568-3097"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.865570"], ["updated_at", "2016-07-30 22:07:57.865570"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-04 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.892005"], ["updated_at", "2016-07-30 22:07:57.892005"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.1ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.3ms
+
+Sent mail to soledad@rippin.info, pearl.kohler@okonhahn.biz (2.4ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: soledad@rippin.info, 
+ pearl.kohler@okonhahn.biz
+Message-ID: <579d253ddaca4_24c53ffcf905e20066398@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Cierra Crona<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Angela Heathcote<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/04/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (24.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "elise_bode@west.org"], ["first_name", "Alejandra"], ["last_name", "Stroman"], ["street", "5447 Kuhic Island"], ["city", "New Jodie"], ["state", "TN"], ["zip", "39679"], ["created_at", "2016-07-30 22:07:57.925195"], ["updated_at", "2016-07-30 22:07:57.925195"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist24' LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones15' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones15"], ["created_at", "2016-07-30 22:07:57.930659"], ["updated_at", "2016-07-30 22:07:57.930659"]]
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist24' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist24"], ["created_at", "2016-07-30 22:07:57.933263"], ["updated_at", "2016-07-30 22:07:57.933263"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("ailment_id", "specialty_id") VALUES (?, ?)  [["ailment_id", 1], ["specialty_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "lee.davis@sengerlarson.name"], ["first_name", "Bettie"], ["last_name", "Osinski"], ["street", "85019 Noble Terrace"], ["city", "East Adele"], ["state", "LA"], ["zip", "60016"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:57.939106"], ["updated_at", "2016-07-30 22:07:57.939106"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "appointments" ("patient_id", "ailment_id", "appointment_on", "doctor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["patient_id", 1], ["ailment_id", 1], ["appointment_on", "2016-08-07 00:00:00.000000"], ["doctor_id", 1], ["created_at", "2016-07-30 22:07:57.943503"], ["updated_at", "2016-07-30 22:07:57.943503"]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.2ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.6ms
+
+Sent mail to elise_bode@west.org, lee.davis@sengerlarson.name (2.4ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: elise_bode@west.org, 
+ lee.davis@sengerlarson.name
+Message-ID: <579d253de75dc_24c53ffcf905e2006648f@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Alejandra Stroman<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Bettie Osinski<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/07/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "appointments" SET "appointment_on" = ?, "updated_at" = ? WHERE "appointments"."id" = ?[0m  [["appointment_on", "2016-08-08 00:00:00.000000"], ["updated_at", "2016-07-30 22:07:57.952265"], ["id", 1]]
+  Rendered appointment_mailer/appointment_scheduled_email.html.erb within layouts/mailer (0.1ms)
+
+AppointmentMailer#appointment_scheduled_email: processed outbound mail in 1.3ms
+
+Sent mail to elise_bode@west.org, lee.davis@sengerlarson.name (2.8ms)
+Date: Sat, 30 Jul 2016 19:07:57 -0300
+From: from@example.com
+To: elise_bode@west.org, 
+ lee.davis@sengerlarson.name
+Message-ID: <579d253de98fa_24c53ffcf905e200665bd@WallStreet.local.mail>
+Subject: Appointment Scheduled
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <p>
+  <strong>Patient</strong>:
+  Alejandra Stroman<br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  Dr. Bettie Osinski<br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  08/08/2016 @ 00:00<br>
+</p>
+
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "marquis.kunde@king.net"], ["first_name", "Keon"], ["last_name", "Zemlak"], ["street", "50720 O'Hara Turnpike"], ["city", "Lesleyland"], ["state", "TX"], ["zip", "10552-0512"], ["created_at", "2016-07-30 22:07:57.962014"], ["updated_at", "2016-07-30 22:07:57.962014"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "aliya@haley.net"], ["first_name", "Randi"], ["last_name", "Walker"], ["street", "3256 Kelsie Causeway"], ["city", "Gradyburgh"], ["state", "WV"], ["zip", "63699"], ["created_at", "2016-07-30 22:07:57.967244"], ["updated_at", "2016-07-30 22:07:57.967244"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "chaz@grimes.info"], ["first_name", "Michael"], ["last_name", "Gulgowski"], ["street", "450 Weissnat Shoals"], ["city", "South Domenicton"], ["state", "HI"], ["zip", "39923-5415"], ["created_at", "2016-07-30 22:07:57.975268"], ["updated_at", "2016-07-30 22:07:57.975268"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "opal@oharazemlak.info"], ["first_name", "Elna"], ["last_name", "McCullough"], ["street", "71554 Cristal Rapid"], ["city", "Skilesstad"], ["state", "NY"], ["zip", "67545-6922"], ["created_at", "2016-07-30 22:07:57.981159"], ["updated_at", "2016-07-30 22:07:57.981159"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "eliezer_swaniawski@effertzko.name"], ["first_name", "Montana"], ["last_name", "Ziemann"], ["street", "31925 Moore Drives"], ["city", "East Woodrow"], ["state", "NE"], ["zip", "87951"], ["created_at", "2016-07-30 22:07:57.987873"], ["updated_at", "2016-07-30 22:07:57.987873"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "salvatore@casper.io"], ["first_name", "Landen"], ["last_name", "Jast"], ["street", "24492 Porter Plaza"], ["city", "Gorczanyhaven"], ["state", "KY"], ["zip", "65795"], ["created_at", "2016-07-30 22:07:57.995725"], ["updated_at", "2016-07-30 22:07:57.995725"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "mortimer@heidenreich.net"], ["first_name", "Alexzander"], ["last_name", "Heller"], ["street", "3138 Olga Springs"], ["city", "Jakaylaside"], ["state", "AL"], ["zip", "66477-9338"], ["created_at", "2016-07-30 22:07:58.002261"], ["updated_at", "2016-07-30 22:07:58.002261"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "rodrick.mayer@denesik.io"], ["first_name", "Wayne"], ["last_name", "Hickle"], ["street", "4281 Yost Lock"], ["city", "Lake Demetriusville"], ["state", "RI"], ["zip", "47656"], ["created_at", "2016-07-30 22:07:58.010475"], ["updated_at", "2016-07-30 22:07:58.010475"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "florencio@kiehn.co"], ["first_name", "Dylan"], ["last_name", "Feeney"], ["street", "874 Gunnar Rest"], ["city", "Sidneyfort"], ["state", "MS"], ["zip", "54283-9429"], ["created_at", "2016-07-30 22:07:58.016720"], ["updated_at", "2016-07-30 22:07:58.016720"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "monserrate_collier@lakin.com"], ["first_name", "Guy"], ["last_name", "Ledner"], ["street", "8742 Reilly Extension"], ["city", "Lake Sisterborough"], ["state", "OR"], ["zip", "76243-0735"], ["created_at", "2016-07-30 22:07:58.033800"], ["updated_at", "2016-07-30 22:07:58.033800"]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "dominique_leuschke@walsh.io"], ["first_name", "Hassan"], ["last_name", "Nader"], ["street", "4756 Owen Spring"], ["city", "Raymundoberg"], ["state", "TN"], ["zip", "80381"], ["created_at", "2016-07-30 22:07:58.040267"], ["updated_at", "2016-07-30 22:07:58.040267"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "buck@ratke.name"], ["first_name", "Kyleigh"], ["last_name", "Willms"], ["street", "616 Wehner Street"], ["city", "New Yolandabury"], ["state", "RI"], ["zip", "25645-7364"], ["created_at", "2016-07-30 22:07:58.046264"], ["updated_at", "2016-07-30 22:07:58.046264"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "mafalda@wunsch.org"], ["first_name", "Maximilian"], ["last_name", "Muller"], ["street", "315 Halvorson Island"], ["city", "New Effieville"], ["state", "MT"], ["zip", "48927-3514"], ["created_at", "2016-07-30 22:07:58.051553"], ["updated_at", "2016-07-30 22:07:58.051553"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "tony.schuppe@ullrich.info"], ["first_name", "Merlin"], ["last_name", "Rath"], ["street", "5746 Nicolas Drive"], ["city", "Wardberg"], ["state", "AR"], ["zip", "65821"], ["created_at", "2016-07-30 22:07:58.058237"], ["updated_at", "2016-07-30 22:07:58.058237"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "ellie@kochbergstrom.co"], ["first_name", "Maia"], ["last_name", "Schinner"], ["street", "552 Barrett Groves"], ["city", "Yasminbury"], ["state", "KY"], ["zip", "93722-2226"], ["created_at", "2016-07-30 22:07:58.063501"], ["updated_at", "2016-07-30 22:07:58.063501"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mckayla@wilderman.co"], ["first_name", "Myrtis"], ["last_name", "Feeney"], ["street", "849 Lang Cape"], ["city", "Leannonton"], ["state", "WV"], ["zip", "96633-0454"], ["created_at", "2016-07-30 22:07:58.068340"], ["updated_at", "2016-07-30 22:07:58.068340"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "clemmie@homenick.info"], ["first_name", "Jaquan"], ["last_name", "Hoeger"], ["street", "597 Medhurst Spurs"], ["city", "East Chesleybury"], ["state", "NM"], ["zip", "58454"], ["created_at", "2016-07-30 22:07:58.072790"], ["updated_at", "2016-07-30 22:07:58.072790"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:58.078575"], ["updated_at", "2016-07-30 22:07:58.078575"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:58.081649"], ["updated_at", "2016-07-30 22:07:58.081649"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1[0m
+  [1m[35mAilment Exists (0.1ms)[0m  SELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones61' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "broken bones61"], ["created_at", "2016-07-30 22:07:58.086328"], ["updated_at", "2016-07-30 22:07:58.086328"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "hailie.bruen@carroll.com"], ["first_name", "Gerardo"], ["last_name", "Osinski"], ["street", "272 Eden Inlet"], ["city", "North Ethyl"], ["state", "UT"], ["zip", "16504"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:58.091510"], ["updated_at", "2016-07-30 22:07:58.091510"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jamel@mosciski.biz"], ["first_name", "Elizabeth"], ["last_name", "Nikolaus"], ["street", "5334 Schuppe Stravenue"], ["city", "Mooreshire"], ["state", "IA"], ["zip", "28278-4645"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:58.095170"], ["updated_at", "2016-07-30 22:07:58.095170"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "gilberto.veum@leuschke.org"], ["first_name", "Lowell"], ["last_name", "Collins"], ["street", "9877 Walker Squares"], ["city", "North Careyport"], ["state", "TN"], ["zip", "51992-3671"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:58.098627"], ["updated_at", "2016-07-30 22:07:58.098627"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDoctor Load (0.4ms)[0m  [1mSELECT "doctors".* FROM "doctors" INNER JOIN "specialties" ON "specialties"."id" = "doctors"."specialty_id" INNER JOIN "ailments_specialties" ON "ailments_specialties"."specialty_id" = "specialties"."id" INNER JOIN "ailments" ON "ailments"."id" = "ailments_specialties"."ailment_id" WHERE "ailments"."id" = 1[0m
+  [1m[35m (1.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "joanny_cormier@boganboehm.org"], ["first_name", "Cheyenne"], ["last_name", "Waters"], ["street", "5823 Kohler Dam"], ["city", "Jasperville"], ["state", "SD"], ["zip", "28672-6785"], ["created_at", "2016-07-30 22:07:58.107228"], ["updated_at", "2016-07-30 22:07:58.107228"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "dan.ondricka@kunde.co"], ["first_name", "Eusebio"], ["last_name", "Yost"], ["street", "2952 Bosco Village"], ["city", "Gislasontown"], ["state", "MO"], ["zip", "73411-4518"], ["created_at", "2016-07-30 22:07:58.112752"], ["updated_at", "2016-07-30 22:07:58.112752"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Cardiologist' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Cardiologist"], ["created_at", "2016-07-30 22:07:58.115978"], ["updated_at", "2016-07-30 22:07:58.115978"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "emerson@weimannbosco.org"], ["first_name", "Germaine"], ["last_name", "Bednar"], ["street", "928 O'Conner Pine"], ["city", "Lake Geoburgh"], ["state", "KY"], ["zip", "38122"], ["created_at", "2016-07-30 22:07:58.120633"], ["updated_at", "2016-07-30 22:07:58.120633"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:58.125489"], ["updated_at", "2016-07-30 22:07:58.125489"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:58.128740"], ["updated_at", "2016-07-30 22:07:58.128740"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'broken bones99' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "broken bones99"], ["created_at", "2016-07-30 22:07:58.133204"], ["updated_at", "2016-07-30 22:07:58.133204"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "ethyl_ullrich@stiedemannarmstrong.org"], ["first_name", "Daryl"], ["last_name", "Bode"], ["street", "5429 Sterling Shoals"], ["city", "Lake Rhiannaton"], ["state", "GA"], ["zip", "69814-8289"], ["specialty_id", 1], ["created_at", "2016-07-30 22:07:58.137916"], ["updated_at", "2016-07-30 22:07:58.137916"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.1ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36m (1.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist"], ["created_at", "2016-07-30 22:07:58.146245"], ["updated_at", "2016-07-30 22:07:58.146245"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Opthamologist' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Opthamologist"], ["created_at", "2016-07-30 22:07:58.149358"], ["updated_at", "2016-07-30 22:07:58.149358"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.1ms)[0m  SELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist' AND "specialties"."id" != 1) LIMIT 1
+  [1m[36mAilment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "ailments" WHERE "ailments"."name" = 'heart disease89' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "ailments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "heart disease89"], ["created_at", "2016-07-30 22:07:58.154610"], ["updated_at", "2016-07-30 22:07:58.154610"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "ailments_specialties" ("specialty_id", "ailment_id") VALUES (?, ?)[0m  [["specialty_id", 1], ["ailment_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "doctors" ("email", "first_name", "last_name", "street", "city", "state", "zip", "specialty_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "evan_schroeder@torpdietrich.info"], ["first_name", "Irma"], ["last_name", "Parisian"], ["street", "19090 Marina Knolls"], ["city", "Port Maryjane"], ["state", "MA"], ["zip", "15435-5522"], ["specialty_id", 2], ["created_at", "2016-07-30 22:07:58.159723"], ["updated_at", "2016-07-30 22:07:58.159723"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDoctor Exists (0.0ms)[0m  SELECT  1 AS one FROM "doctors" INNER JOIN "specialties" ON "doctors"."specialty_id" = "specialties"."id" INNER JOIN "ailments_specialties" ON "specialties"."id" = "ailments_specialties"."specialty_id" WHERE "ailments_specialties"."ailment_id" = ? AND "doctors"."id" = ? LIMIT 1  [["ailment_id", 1], ["id", 1]]
+  [1m[36m (1.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "helga.bruen@mayermuller.name"], ["first_name", "Edgar"], ["last_name", "Altenwerth"], ["street", "55215 Dax Corner"], ["city", "West Stephon"], ["state", "VT"], ["zip", "76040"], ["created_at", "2016-07-30 22:07:58.166500"], ["updated_at", "2016-07-30 22:07:58.166500"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "timmy_stamm@gerlachpagac.net"], ["first_name", "Titus"], ["last_name", "Wisoky"], ["street", "43989 Toy Run"], ["city", "South Murphy"], ["state", "KS"], ["zip", "31154"], ["created_at", "2016-07-30 22:07:58.171606"], ["updated_at", "2016-07-30 22:07:58.171606"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "maxwell@yost.net"], ["first_name", "Sarah"], ["last_name", "Collier"], ["street", "2200 McDermott Road"], ["city", "Wuckertport"], ["state", "DE"], ["zip", "37956"], ["created_at", "2016-07-30 22:07:58.179633"], ["updated_at", "2016-07-30 22:07:58.179633"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "duncan@cain.co"], ["first_name", "Art"], ["last_name", "Konopelski"], ["street", "6176 Wolf Wells"], ["city", "Naderville"], ["state", "UT"], ["zip", "69368"], ["created_at", "2016-07-30 22:07:58.185492"], ["updated_at", "2016-07-30 22:07:58.185492"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "bud@kautzer.io"], ["first_name", "Shawna"], ["last_name", "Breitenberg"], ["street", "8038 Bradford Brook"], ["city", "South Ayana"], ["state", "AR"], ["zip", "95535-3762"], ["created_at", "2016-07-30 22:07:58.192264"], ["updated_at", "2016-07-30 22:07:58.192264"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "carlotta@jacobsquitzon.org"], ["first_name", "Casper"], ["last_name", "Aufderhar"], ["street", "861 Isabell Island"], ["city", "Schmittbury"], ["state", "RI"], ["zip", "72212"], ["created_at", "2016-07-30 22:07:58.198696"], ["updated_at", "2016-07-30 22:07:58.198696"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "maybell_boehm@sauer.name"], ["first_name", "Laila"], ["last_name", "Will"], ["street", "85321 Wellington Ports"], ["city", "New Electa"], ["state", "WY"], ["zip", "91684-8004"], ["created_at", "2016-07-30 22:07:58.205091"], ["updated_at", "2016-07-30 22:07:58.205091"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "maiya@connelly.biz"], ["first_name", "Harmony"], ["last_name", "Bednar"], ["street", "31022 Nelda Flats"], ["city", "Rathberg"], ["state", "ME"], ["zip", "83769"], ["created_at", "2016-07-30 22:07:58.211814"], ["updated_at", "2016-07-30 22:07:58.211814"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jody@kilbackbode.biz"], ["first_name", "Albert"], ["last_name", "Blanda"], ["street", "63693 Claudie Courts"], ["city", "Alverafurt"], ["state", "MD"], ["zip", "55473-4448"], ["created_at", "2016-07-30 22:07:58.219377"], ["updated_at", "2016-07-30 22:07:58.219377"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "raymond_kautzer@ebertbosco.com"], ["first_name", "Destany"], ["last_name", "Beatty"], ["street", "60996 Jerry Mountains"], ["city", "New Aylinmouth"], ["state", "PA"], ["zip", "29355-9169"], ["created_at", "2016-07-30 22:07:58.234860"], ["updated_at", "2016-07-30 22:07:58.234860"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "bria_hoeger@jerde.com"], ["first_name", "Misael"], ["last_name", "Jenkins"], ["street", "6893 Rita Forks"], ["city", "Lake Kamrynburgh"], ["state", "KS"], ["zip", "58236-8531"], ["created_at", "2016-07-30 22:07:58.240123"], ["updated_at", "2016-07-30 22:07:58.240123"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "jacinthe.kulas@feestkirlin.biz"], ["first_name", "Muhammad"], ["last_name", "Flatley"], ["street", "832 Jared Summit"], ["city", "Vandervortmouth"], ["state", "DE"], ["zip", "89583"], ["created_at", "2016-07-30 22:07:58.246117"], ["updated_at", "2016-07-30 22:07:58.246117"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "jon@beatty.info"], ["first_name", "Wilmer"], ["last_name", "Effertz"], ["street", "276 Yundt Glens"], ["city", "Walterchester"], ["state", "MD"], ["zip", "94439"], ["created_at", "2016-07-30 22:07:58.250874"], ["updated_at", "2016-07-30 22:07:58.250874"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "kathryne.schuppe@hansenfisher.name"], ["first_name", "Emmet"], ["last_name", "Gottlieb"], ["street", "626 Walker Burgs"], ["city", "Taliamouth"], ["state", "ND"], ["zip", "83256"], ["created_at", "2016-07-30 22:07:58.256255"], ["updated_at", "2016-07-30 22:07:58.256255"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["email", "una_turner@schimmel.net"], ["first_name", "Gunnar"], ["last_name", "Dickinson"], ["street", "19223 Andy Plains"], ["city", "North Hiramtown"], ["state", "IA"], ["zip", "74651-3258"], ["created_at", "2016-07-30 22:07:58.261587"], ["updated_at", "2016-07-30 22:07:58.261587"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "patients" ("email", "first_name", "last_name", "street", "city", "state", "zip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "cayla_boehm@goodwin.biz"], ["first_name", "Rupert"], ["last_name", "Labadie"], ["street", "40632 Bednar Fall"], ["city", "West Brandtport"], ["state", "OK"], ["zip", "68237"], ["created_at", "2016-07-30 22:07:58.266956"], ["updated_at", "2016-07-30 22:07:58.266956"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSpecialty Exists (0.2ms)[0m  SELECT  1 AS one FROM "specialties" WHERE "specialties"."name" = 'Orthopedist90' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "specialties" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Orthopedist90"], ["created_at", "2016-07-30 22:07:58.273066"], ["updated_at", "2016-07-30 22:07:58.273066"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSpecialty Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "specialties" WHERE ("specialties"."name" = 'Orthopedist90' AND "specialties"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/appointments" for 127.0.0.1 at 2016-07-30 19:07:58 -0300
+Processing by AppointmentsController#index as HTML
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  Rendered appointments/_list.html.erb (1.3ms)
+  Rendered appointments/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 332ms (Views: 306.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/doctors" for 127.0.0.1 at 2016-07-30 19:07:58 -0300
+Processing by DoctorsController#index as HTML
+  [1m[36mDoctor Load (0.2ms)[0m  [1mSELECT "doctors".* FROM "doctors"[0m
+  Rendered doctors/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/patients" for 127.0.0.1 at 2016-07-30 19:07:58 -0300
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.2ms)[0m  SELECT "patients".* FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

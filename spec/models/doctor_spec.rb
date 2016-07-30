@@ -60,6 +60,17 @@ describe Doctor do
     end
   end
 
+  describe '#address' do
+    let(:address) { subject.address }
+
+    it 'contains Street, Zip, City and State info' do
+      expect(address.include?(subject.street)).to be_truthy
+      expect(address.include?(subject.zip)).to be_truthy
+      expect(address.include?(subject.city)).to be_truthy
+      expect(address.include?(subject.state)).to be_truthy
+    end
+  end
+
   describe '#is_appropriate_for?' do
     before do
       @specialty = create(:specialty, name: 'Orthopedist')

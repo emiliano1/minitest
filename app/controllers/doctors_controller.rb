@@ -61,6 +61,17 @@ class DoctorsController < ApplicationController
     end
   end
 
+  # GET /doctors/appropriate_for/1
+  # GET /doctors/appropriate_for/1.json
+  def appropriate_for
+    @doctors = Doctor.appropriate_for(params[:ailment_id])
+
+    respond_to do |format|
+      format.html { render layout: nil }
+      format.json
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor
@@ -69,6 +80,6 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:email, :first_name, :last_name, :street, :city, :state, :zip)
+      params.require(:doctor).permit(:email, :first_name, :last_name, :street, :city, :state, :zip, :specialty_id)
     end
 end

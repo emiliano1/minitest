@@ -1,0 +1,25 @@
+<table>
+  <thead>
+  <tr>
+    <th>Patient</th>
+    <th>Doctor</th>
+    <th>Ailment</th>
+    <th>Date/Hour</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% appointments.each do |appointment| %>
+    <tr>
+      <td><%= link_to appointment.patient_name, appointment.patient %></td>
+      <td><%= link_to appointment.doctor_name, appointment.doctor %></td>
+      <td><%= appointment.ailment_name %></td>
+      <td><%=l appointment.appointment_on, format: "%m/%d/%Y @ %H:%M" %></td>
+      <td><%= link_to 'View', appointment %></td>
+      <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+      <td><%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

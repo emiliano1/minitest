@@ -1,0 +1,14 @@
+<p>
+  <strong>Patient</strong>:
+  <%= @appointment.patient_name %><br>
+</p>
+
+<p>
+  <strong>Doctor</strong>:
+  <%= @appointment.doctor_name %><br>
+</p>
+
+<p>
+  <strong>Date/Time</strong>:
+  <%=l @appointment.appointment_on, format: "%m/%d/%Y @ %H:%M" %><br>
+</p>

@@ -6,5 +6,11 @@
 
 <%= render partial: "shared/show_person", locals: { person: @patient} %>
 
+<% if @patient.appointments.any? %>
+  <h2>Appointments</h2>
+
+  <%= render partial: 'appointments/list', locals: {appointments: @patient.appointments} %>
+<% end %>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

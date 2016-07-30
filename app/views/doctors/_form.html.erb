@@ -12,4 +12,13 @@
   <% end %>
 
   <%= render partial: "shared/person_form", locals: { form: f, person: @doctor } %>
+
+  <div class="field">
+    <%= f.label :specialty %><br>
+    <%= f.select :specialty_id, options_from_collection_for_select(Specialty.all, :id, :name, @doctor.specialty_id), include_blank: 'Select specialty' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

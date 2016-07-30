@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Appointments</h1>
+
+<%= render partial: 'list', locals: {appointments: @appointments} %>
+
+<br>
+
+<%= link_to 'New Appointment', new_appointment_path %>

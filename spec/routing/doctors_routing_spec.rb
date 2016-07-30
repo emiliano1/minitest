@@ -35,5 +35,9 @@ RSpec.describe DoctorsController, type: :routing do
       expect(:delete => "/doctors/1").to route_to("doctors#destroy", :id => "1")
     end
 
+    it "routes to #appropriate_for" do
+      expect(:get => "/doctors/appropriate-for/1").to route_to("doctors#appropriate_for", :ailment_id => "1")
+    end
+
   end
 end

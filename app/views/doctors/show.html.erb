@@ -6,5 +6,16 @@
 
 <%= render partial: "shared/show_person", locals: {person: @doctor} %>
 
+<p>
+  <strong>Specialty:</strong>
+  <%= @doctor.specialty_name %>
+</p>
+
+<% if @doctor.appointments.any? %>
+  <h2>Appointments</h2>
+
+  <%= render partial: 'appointments/list', locals: {appointments: @doctor.appointments} %>
+<% end %>
+
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>

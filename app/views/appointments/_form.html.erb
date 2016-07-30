@@ -1,0 +1,46 @@
+<%= form_for(@appointment) do |f| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patient %><br>
+    <%= f.select :patient_id, options_from_collection_for_select(Patient.all, :id, :name, @appointment.patient_id), include_blank: 'Select patient' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ailment %><br>
+    <%= f.select :ailment_id, options_from_collection_for_select(Ailment.all, :id, :name, @appointment.ailment_id), include_blank: 'Select ailment' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :doctor %><br>
+    <%= f.select :doctor_id, options_from_collection_for_select(Doctor.appropriate_for(@appointment.ailment_id), :id, :name_with_specialty, @appointment.doctor_id), include_blank: 'Select an ailment first' %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Date/Time' %><br>
+    <%= f.datetime_select :appointment_on, minute_step: 30 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    $('#appointment_ailment_id').on('change', function(){
+      $('#appointment_doctor_id').html("<option>Loading Doctors...</option>");
+      $('#appointment_doctor_id').load('/doctors/appropriate-for/' + $(this).val());
+    });
+  </script>
+<% end %>

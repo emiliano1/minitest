@@ -1,13 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+orthopedist = Specialty.find_or_create_by!(name: 'Orthopedist')
+opthamologist = Specialty.find_or_create_by!(name: 'Opthamologist')
+cardiologist = Specialty.find_or_create_by!(name: 'Cardiologist')
+
+Ailment.find_or_create_by!(name: 'broken bones') do |ailment|
+  ailment.specialties << orthopedist
+end
+
+Ailment.find_or_create_by!(name: 'eye trouble') do |ailment|
+  ailment.specialties << opthamologist
+end
+
+Ailment.find_or_create_by!(name: 'heart disease') do |ailment|
+  ailment.specialties << cardiologist
+end
 
 10.times do
-  FactoryGirl.create :doctor
+  FactoryGirl.create :doctor, specialty: Specialty.order("RANDOM()").first
 end
 
 10.times do

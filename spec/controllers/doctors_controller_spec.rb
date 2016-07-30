@@ -127,4 +127,23 @@ describe DoctorsController do
     end
   end
 
+  describe "GET #appropriate_for" do
+    before do
+      @specialty = create(:specialty, name: 'Orthopedist')
+      @non_appropriate_specialty = create(:specialty, name: 'Opthamologist')
+
+      @ailment = create(:ailment, specialties: [@specialty])
+    end
+
+    it "assigns appropriate doctors as @doctors" do
+      appropriate_doctor1 = Doctor.create! valid_attributes.merge(specialty: @specialty)
+      appropriate_doctor2 = Doctor.create! valid_attributes.merge(specialty: @specialty)
+      non_appropriate_doctor = Doctor.create! valid_attributes.merge(specialty: @non_appropriate_specialty)
+
+      get :appropriate_for, {ailment_id: @specialty.id}, valid_session
+
+      expect(assigns(:doctors)).to eq([appropriate_doctor1, appropriate_doctor2])
+    end
+  end
+
 end

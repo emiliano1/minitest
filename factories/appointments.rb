@@ -5,6 +5,7 @@ FactoryGirl.define do
 
     appointment_on { Faker::Date.between(3.days.from_now, 10.days.from_now) }
 
+    # sets an appropriate Doctor
     after :build do |appointment|
       appointment.doctor ||= create(:doctor, specialty: appointment.ailment.specialties.sample)
     end

@@ -17,22 +17,26 @@ class Appointment < ActiveRecord::Base
   validate :doctor_is_appropriate
   validate :appointment_on_is_valid
 
+  # sending email on save, so that the recipients get notified on every new udpates on the appointment
   after_save :send_emails
 
+  # helper method to get recipient emails
   def recipient_emails
     [patient.try(:email), doctor.try(:email)].compact
   end
 
   private
 
+  # checks if Doctor's Specialty is appropriate for the Ailment
   def doctor_is_appropriate
     return if ailment.nil? || doctor.nil?
 
     unless doctor.is_appropriate_for?(ailment)
-      errors[:doctor] << "cannot handle this ailment"
+      errors[:doctor] << "is not appropriate for this ailment"
     end
   end
 
+  # check if date is at least 3 days from today
   def appointment_on_is_valid
     return if appointment_on.nil? || !appointment_on_changed?
 

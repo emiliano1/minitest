@@ -63,6 +63,8 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/appropriate_for/1
   # GET /doctors/appropriate_for/1.json
+  # this will popupate the Doctor's select field, on the Appointment form
+  # including only Doctors appropriate for the given Ailment
   def appropriate_for
     @doctors = Doctor.appropriate_for(params[:ailment_id])
 

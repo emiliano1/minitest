@@ -1,4 +1,4 @@
-# Spreemo Code Test
+# Minitest Code Test
 
 We're going to build a tool to schedule doctor's appointments. We already have a
 way to keep track of the patients that need to be scheduled and the doctors that

@@ -1,28 +1,14 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
-  # GET /doctors
-  # GET /doctors.json
   def index
     @doctors = Doctor.all
   end
 
-  # GET /doctors/1
-  # GET /doctors/1.json
-  def show
-  end
-
-  # GET /doctors/new
   def new
     @doctor = Doctor.new
   end
 
-  # GET /doctors/1/edit
-  def edit
-  end
-
-  # POST /doctors
-  # POST /doctors.json
   def create
     @doctor = Doctor.new(doctor_params)
 
@@ -37,8 +23,6 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /doctors/1
-  # PATCH/PUT /doctors/1.json
   def update
     respond_to do |format|
       if @doctor.update(doctor_params)
@@ -51,8 +35,6 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # DELETE /doctors/1
-  # DELETE /doctors/1.json
   def destroy
     @doctor.destroy
     respond_to do |format|
@@ -61,9 +43,7 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # GET /doctors/appropriate_for/1
-  # GET /doctors/appropriate_for/1.json
-  # this will popupate the Doctor's select field, on the Appointment form
+  # this will populate the Doctor's select field, on the Appointment form
   # including only Doctors appropriate for the given Ailment
   def appropriate_for
     @doctors = Doctor.appropriate_for(params[:ailment_id])

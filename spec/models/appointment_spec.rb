@@ -52,23 +52,4 @@ describe Appointment do
       expect(no_specialty_appointment).to be_invalid
     end
   end
-
-  describe 'callbacks' do
-    it 'sends email to patient and doctor for new appointments' do
-      appointment = build(:appointment)
-
-      expect(AppointmentMailer).to receive(:appointment_scheduled_email).with(appointment).and_call_original
-
-      appointment.save
-    end
-
-    it 'sends email to patient and doctor when an appointment is updated' do
-      appointment = create(:appointment)
-
-      expect(AppointmentMailer).to receive(:appointment_scheduled_email).with(appointment).and_call_original
-
-      appointment.appointment_on = appointment.appointment_on + 1.day
-      appointment.save
-    end
-  end
 end

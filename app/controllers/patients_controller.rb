@@ -1,28 +1,14 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
-  # GET /patients
-  # GET /patients.json
   def index
     @patients = Patient.all
   end
 
-  # GET /patients/1
-  # GET /patients/1.json
-  def show
-  end
-
-  # GET /patients/new
   def new
     @patient = Patient.new
   end
 
-  # GET /patients/1/edit
-  def edit
-  end
-
-  # POST /patients
-  # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
 
@@ -37,8 +23,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /patients/1
-  # PATCH/PUT /patients/1.json
   def update
     respond_to do |format|
       if @patient.update(patient_params)
@@ -51,8 +35,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.json
   def destroy
     @patient.destroy
     respond_to do |format|

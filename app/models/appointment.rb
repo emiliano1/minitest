@@ -17,9 +17,6 @@ class Appointment < ActiveRecord::Base
   validate :doctor_is_appropriate
   validate :appointment_on_is_valid
 
-  # sending email on save, so that the recipients get notified on every new udpates on the appointment
-  after_save :send_emails
-
   # helper method to get recipient emails
   def recipient_emails
     [patient.try(:email), doctor.try(:email)].compact
@@ -43,9 +40,5 @@ class Appointment < ActiveRecord::Base
     unless (appointment_on.to_date - Date.today) >= MINIMUM_DAYS
       errors[:appointment_on] << "should be at least #{MINIMUM_DAYS} days from today"
     end
-  end
-
-  def send_emails
-    AppointmentMailer.appointment_scheduled_email(self).deliver_now if changed?
   end
 end
